@@ -3,18 +3,17 @@ import React from "react";
 
 function Navigation() {
   return (
-    <nav className='text-xl z-10'>
-      <ul className='flex gap-16 items-center'>
+    <nav className='text-xl'>
+      <ul className='flex gap-12 items-center'>
         <li>
-          <Link href='/' className='hover:text-primary-200 duration-300'>
-            Home
+          <Link
+            href='/best-seller'
+            className='hover:text-primary-200 duration-300'
+          >
+            Best sellers
           </Link>
         </li>
-        <li>
-          <Link href='/about' className='hover:text-primary-200 duration-300'>
-            About
-          </Link>
-        </li>
+
         <li>
           <Link
             href='/category'
@@ -23,6 +22,13 @@ function Navigation() {
             Category
           </Link>
         </li>
+
+        <li>
+          <Link href='/about' className='hover:text-primary-200 duration-300'>
+            About
+          </Link>
+        </li>
+
         <li>
           <Link href='/blogs' className='hover:text-primary-200 duration-300'>
             Blogs

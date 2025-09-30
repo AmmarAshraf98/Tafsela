@@ -7,13 +7,14 @@ function Logo() {
     <Link href='/' className='flex items-center gap-2'>
       <Image
         src={logo}
-        alt='tafsela'
+        alt='tafsela website'
         className='rounded-full'
-        width={50}
-        height={50}
+        width={55}
+        height={55}
       />
-      <span>Tafsela</span>
+      <span className='text-xl'>Tafsela</span>
     </Link>
   );
 }
+
 export default Logo;
