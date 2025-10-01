@@ -45,7 +45,7 @@ export default function RootLayout({
         className={`${josefin.className} antialiased bg-primary-900 text-primary-100 flex flex-col min-h-screen divide-y divide-primary-50/20`}
       >
         <Header />
-        <div className='flex-1 px-8 py-12 relative'>
+        <div className='flex-1 px-8 py-12 '>
           <main className=' max-w-7xl mx-auto'>{children}</main>
         </div>
         {/* <Footer /> */}

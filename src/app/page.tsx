@@ -19,7 +19,7 @@ export default async function Home() {
         </h1>
         <Link
           href='/best-seller'
-          className='bg-primary-200 px-8 py-5 text-primary-800 text-lg font-semibold hover:bg-primary-600 transition-all'
+          className='bg-primary-600 px-8 py-5 text-primary-900 text-lg font-semibold hover:bg-primary-200 transition-all'
         >
           explore luxury items
         </Link>
