@@ -3,6 +3,7 @@ import React from "react";
 import ab3 from "../../../public/about/ab7.jpeg";
 import ab2 from "../../../public/about/wedding contract.jpeg";
 import Image from "next/image";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "About",
@@ -52,7 +53,7 @@ function page() {
       </div>
 
       <div className='col-span-3'>
-        <h1 className='text-4xl mb-10 text-accent-400 font-medium'>
+        <h1 className='text-4xl mb-10 text-primary-400 font-medium'>
           Managed by our family since 2018
         </h1>
 
@@ -76,12 +77,13 @@ function page() {
           </p>
 
           <div>
-            <a
+            <Link
               href='/category'
-              className='inline-block mt-4 bg-primary-200 px-8 py-5 text-primary-800 text-lg font-semibold hover:bg-primary-600 transition-all'
+              // className='inline-block mt-4 bg-primary-200 px-8 py-5 text-primary-800 text-lg font-semibold hover:bg-primary-600 transition-all'
+              className='text-primary-200 bg-primary-600 cursor-pointer px-8 py-5 transition-all duration-300 hover:text-primary-900 hover:bg-primary-400'
             >
               Explore our luxury category
-            </a>
+            </Link>
           </div>
         </div>
       </div>
