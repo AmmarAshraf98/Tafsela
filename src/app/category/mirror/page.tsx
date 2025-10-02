@@ -1,28 +1,24 @@
-import { supabase } from "@/services/supaBase";
 import { Metadata } from "next";
 import React from "react";
-import { product } from "../../../lib/types/product_i";
-import { supaBaseError } from "@/lib/types/supabaseError";
+import { getAllItems } from "@/services/dataServece";
+import ProductCard from "@/_Components/ProductCard/ProductCard";
 
 export const metadata: Metadata = {
   title: " Bride Mirror",
 };
 
 async function page() {
-  // console.log(product);
+  const data = await getAllItems();
+  console.log("data =>", data);
 
-  const { data, error } = (await supabase.from("items").select("*")) as {
-    data: product[] | null;
-    error: supaBaseError;
-  };
-
-  if (error) {
-    console.error("Error fetching data:", error.message);
-  }
-
-  console.log(data);
-
-  return <div>Bride Mirror | page</div>;
+  return (
+    <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 xl:gap-14'>
+      {data?.length &&
+        data.map((product) => (
+          <ProductCard product={product} key={product.id} />
+        ))}
+    </div>
+  );
 }
 
 export default page;

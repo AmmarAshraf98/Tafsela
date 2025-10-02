@@ -1,4 +1,5 @@
 import { SideNavigationLinks } from "@/lib/types/sideNAvigationKinks";
+import { getCategories } from "@/services/dataServece";
 import Link from "next/link";
 import React from "react";
 import { FaHandHoldingHeart } from "react-icons/fa6";
@@ -44,7 +45,9 @@ const links: SideNavigationLinks[] = [
   },
 ];
 
-function SideNavigation() {
+async function SideNavigation() {
+  // const data = await getCategories();
+
   return (
     <ul className='flex flex-col space-y-2.5 text-lg font-medium md:mr-2'>
       {links.map((link) => (
