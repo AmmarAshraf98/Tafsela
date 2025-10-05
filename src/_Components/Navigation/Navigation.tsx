@@ -3,7 +3,7 @@ import React from "react";
 
 function Navigation() {
   return (
-    <nav className='text-xl'>
+    <nav className='md:text-xl hidden md:block'>
       <ul className='flex gap-12 items-center'>
         <li>
           <Link
@@ -16,10 +16,10 @@ function Navigation() {
 
         <li>
           <Link
-            href='/category'
+            href='/products'
             className='hover:text-primary-200 duration-300'
           >
-            Category
+            Products
           </Link>
         </li>
 

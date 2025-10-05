@@ -34,7 +34,7 @@
 
 
 /* loader */
-.loader {
+/* .loader {
   width: 60px;
   aspect-ratio: 1;
   background: linear-gradient(#c1945d 0 0) bottom/100% 0% no-repeat #ccc;
@@ -45,8 +45,35 @@
   -webkit-mask-size: 50% 50%;
   -webkit-mask-repeat: no-repeat;
   animation: l19 2s infinite linear;
-}
+} */
 
+@layer components {
+  .spinner {
+    margin: 3.2rem auto 1.6rem;
+    width: 60px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 8px solid theme("colors.primary.800");
+    border-right-color: theme("colors.primary.300");
+    animation: rotate 1s infinite linear;
+  }
+
+  .spinner-mini {
+    margin: 0;
+    width: 20px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 2px solid theme("colors.primary.200");
+    border-right-color: transparent;
+    animation: rotate 1s infinite linear;
+  }
+
+  @keyframes rotate {
+    to {
+      transform: rotate(1turn);
+    }
+  }
+}
 @keyframes l19 {
   90%,
   100% {

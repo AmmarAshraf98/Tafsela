@@ -7,6 +7,7 @@ function Header() {
     <header className='px-8 py-5 z-10'>
       <div className='flex justify-between items-center max-w-7xl mx-auto'>
         <Logo />
+        
         <Navigation />
       </div>
     </header>

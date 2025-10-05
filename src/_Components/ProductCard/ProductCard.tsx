@@ -1,18 +1,19 @@
+import { maxLength } from "@/lib/helper/descriptionLength";
 import { convertDriveLink } from "@/lib/helper/getImageUrl";
 import { product } from "@/lib/types/product_i";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { BiUser } from "react-icons/bi";
+// import { BiUser } from "react-icons/bi";
 
 function ProductCard({ product }: { product: product }) {
   const { id, name, description, price, on_sale, main_img } = product;
   const res = convertDriveLink(main_img);
   //   const x = product;
-  console.log("name=>", name);
+  // console.log("name=>", name);
 
-  console.log("product in ProductCard =>", res);
-  console.log("====================================");
+  // console.log("product in ProductCard =>", res);
+  // console.log("====================================");
 
   //   {
   //     category: 2,
@@ -36,47 +37,53 @@ function ProductCard({ product }: { product: product }) {
 
   return (
     <div className='border-primary-800 border relative'>
-      <div className='relative h-[280px]'>
-        <Image src={res} fill alt={`Cabin ${name}`} className=' object-cover' />
+      {/* MAIN_Image */}
+      <div className='relative h-[300px]'>
+        <Image
+          src={res}
+          fill
+          alt={`Cabin ${name}`}
+          className=' object-cover object-top'
+        />
       </div>
 
-      <div className=''>
-        <div className='pt-5 pb-4 px-7 bg-primary-900 flex-grow'>
-          <h3 className='text-accent-500 font-semibold text-2xl mb-3'>
-            Cabin {name}
-          </h3>
+      {/* PRODUCT_CONTENT */}
+      <div className='pt-5 pb-4 px-7 bg-primary-900 flex-grow mb-[50px]'>
+        <h3 className='text-accent-500 font-semibold text-xl mb-3'>
+          Cabin {name}
+        </h3>
 
-          <div className='flex gap-3 items-center mb-2'>
-            <BiUser className='h-5 w-5 text-primary-600' />
-            <p className='text-lg text-primary-200'>
-              {/* For up to <span className='font-bold'>{maxCapacity}</span> guests */}
-              <span className='font-bold'>{description}</span>
-            </p>
-          </div>
+        {/* description */}
+        <p className='text-md text-primary-200'>
+          {/* For up to <span className='font-bold'>{maxCapacity}</span> guests */}
+          <span className='font-bold'>{maxLength(description)}</span>
+        </p>
 
-          <p className='flex gap-3 justify-end items-baseline'>
-            {on_sale ? (
-              <>
-                <span className='text-3xl font-[350]'>${price}</span>
-                <span className='line-through font-semibold text-primary-600'>
-                  ${price}
-                </span>
-              </>
-            ) : (
-              <span className='text-3xl font-[350]'>${price}</span>
-            )}
-            <span className='text-primary-200'>/ night</span>
-          </p>
-        </div>
+        {/* price */}
+        <p className='flex gap-3 justify-end items-baseline'>
+          {on_sale ? (
+            <>
+              <span className='text-2xl font-[350]'>${price}</span>
+              <span className='line-through font-semibold text-primary-500'>
+                ${price}
+              </span>
+            </>
+          ) : (
+            <span className='text-2xl font-[350]'>${price}</span>
+          )}
+          <span className='text-primary-200'>/ 1 item</span>
+        </p>
+      </div>
 
-        <div className='flex-1 text-right border-t border-primary-800 '>
-          <Link
-            href={`/cabins/${id}`}
-            className='border-l  border-primary-800 py-4 px-6 inline-block hover:bg-primary-600 transition-all hover:text-primary-900'
-          >
-            Details & reservation &rarr;
-          </Link>
-        </div>
+      {/* CARD_FOOTER */}
+      <div className='text-right border-t border-primary-800 absolute bottom-0 w-full'>
+        <Link
+          href={`/cabins/${id}`}
+          // className='border-l  border-primary-800 py-4 px-6 inline-block hover:bg-primary-600 transition-all hover:text-primary-900'
+          className='py-4 px-6 inline-block border-l border-primary-800 text-primary-200 cursor-pointer md:py-3 md:px-3 transition-all duration-300 hover:text-primary-900 hover:bg-primary-400'
+        >
+          Details &rarr;
+        </Link>
       </div>
     </div>
   );
