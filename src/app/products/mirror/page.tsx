@@ -1,23 +1,26 @@
 import { Metadata } from "next";
-import React from "react";
-import { getAllItems } from "@/services/dataServece";
-import ProductCard from "@/_Components/ProductCard/ProductCard";
+import React, { Suspense } from "react";
+import MirrorList from "../_Components/MirrorList";
+import Spinner from "@/_Components/Spinner";
+import SectionHeader from "../_Components/SectionHeader";
 
 export const metadata: Metadata = {
   title: " Bride Mirror",
 };
 
 async function page() {
-  const data = await getAllItems();
-  // console.log("data =>", data);
-
   return (
-    <div className='grid sm:grid-cols-1 md:grid-cols-2 lg-grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6 xl:gap-8'>
-      {data?.length &&
-        data.map((product) => (
-          <ProductCard product={product} key={product.id} />
-        ))}
-    </div>
+    <section>
+      <SectionHeader
+        title='Our Luxury Bride Mirror'
+        description='Timeless elegance, perfectly reflected. Bespoke Bride Mirrors crafted
+          to embody your beauty and style.'
+      />
+
+      <Suspense fallback={<Spinner />}>
+        <MirrorList />
+      </Suspense>
+    </section>
   );
 }
 

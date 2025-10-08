@@ -78,7 +78,7 @@ function ProductCard({ product }: { product: product }) {
       {/* CARD_FOOTER */}
       <div className='text-right border-t border-primary-800 absolute bottom-0 w-full'>
         <Link
-          href={`/cabins/${id}`}
+          href={`/products/${id}`}
           // className='border-l  border-primary-800 py-4 px-6 inline-block hover:bg-primary-600 transition-all hover:text-primary-900'
           className='py-4 px-6 inline-block border-l border-primary-800 text-primary-200 cursor-pointer md:py-3 md:px-3 transition-all duration-300 hover:text-primary-900 hover:bg-primary-400'
         >

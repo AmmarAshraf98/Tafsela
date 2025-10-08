@@ -54,27 +54,32 @@ const links: SideNavigationLinks[] = [
 
 async function SideNavigation() {
   return (
-    <div className='md:fixed'>
-      <h2 className='md:text-3xl capitalize mb-3 text-primary-600 hidden lg:block'>
+    <header className='bg-primary-500/10 rounded-md p-4 '>
+      <h2 className='md:text-3xl capitalize mb-3 text-primary-600 font-semibold'>
         our category
       </h2>
-      <ul className='flex md:flex-col gap-x-3 flex-wrap md:justify-start py-1 md:py-0 space-y-2.5 text-lg font-medium md:mr-2'>
-        {links.map((link) => (
-          <li
-            key={link.id}
-            className=' text-primary-200 cursor-pointer inline-block border border-primary-800 p-3 md:py-3 md:px-3 transition-all rounded-full duration-300 hover:text-primary-900 hover:bg-primary-400 size-14 md:size-auto'
-          >
-            <Link
-              href={link.href}
-              className='flex items-center justify-center lg:justify-start lg:gap-2'
+      <div
+        className='max-w-4xl p-2 mb-10 overflow-x-auto overflow-visible custom-scroll scroll-smooth scroll-px-4
+      snap-x snap-mandatory'
+      >
+        <ul className='flex gap-x-3 font-sm'>
+          {links.map((link) => (
+            <li
+              key={link.id}
+              className=' text-primary-200 cursor-pointer block border border-primary-800 px-2 py-1 transition-all rounded-full duration-300 hover:text-primary-900 hover:bg-primary-400'
             >
-              <span className='text-2xl lg:text-base'>{link.icon}</span>
-              <span className='hidden lg:block'>{link.name}</span>
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
+              <Link
+                href={link.href}
+                className='flex items-center justify-center gap-2 '
+              >
+                <span className='text-2xl lg:text-base'>{link.icon}</span>
+                {link.name}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </header>
   );
 }
 

@@ -34,7 +34,7 @@ export const getAllItems = async () => {
 };
 
 // get single product by id
-export const getSpecificProduct = async (id: number) => {
+export const getSpecificProduct = async (id: string) => {
   const { data, error } = (await supabase
     .from("items")
     .select("*")
