@@ -11,11 +11,9 @@
 // });
 
 import React from "react";
-import Navigation from "../_Components/Navigation/Navigation";
 import Footer from "../_Components/Footer/Footer";
 import "./globals.css";
 import type { Metadata } from "next";
-import Logo from "../_Components/Logo/Logo";
 import { Josefin_Sans } from "next/font/google";
 import Header from "@/_Components/Header/Header";
 
@@ -45,7 +43,7 @@ export default function RootLayout({
         className={`${josefin.className} antialiased bg-primary-900 text-primary-100 flex flex-col min-h-screen divide-y divide-primary-50/20`}
       >
         <Header />
-        <div className='flex-1 px-8 py-12 grid'>
+        <div className='flex-1 px-8 py-12'>
           <main className=' max-w-7xl mx-auto w-full'>{children}</main>
         </div>
         {/* <Footer /> */}

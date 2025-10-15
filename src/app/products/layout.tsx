@@ -1,15 +1,12 @@
 import React from "react";
 import Filteration from "./_Components/Filteration";
-import SideNavigation from "./_Components/SideNavigation";
+import CategorySlider from "./_Components/CategorySlider/CategorySlider";
 
 function layout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <section className=''>
-      <div className='pe-2'>
-        <SideNavigation />
-      </div>
-
-      <div className='md:grid md:grid-cols-[4rem_1fr] lg:grid-cols-[16rem_1fr] h-full gap-4 md:gap-12 md:divide-x md:divide-primary-300'>
+      <CategorySlider />
+      <div className='md:grid md:grid-cols-[3rem_1fr] lg:grid-cols-[16rem_1fr] h-full gap-4 md:gap-12 md:divide-x md:divide-primary-300'>
         <div className='mb-8 md:mb-0'>
           <Filteration />
         </div>
@@ -17,6 +14,6 @@ function layout({ children }: Readonly<{ children: React.ReactNode }>) {
       </div>
     </section>
   );
-}
+} 
 
 export default layout;

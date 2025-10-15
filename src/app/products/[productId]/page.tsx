@@ -1,8 +1,28 @@
-import { getSpecificProduct } from "@/services/dataServece";
+import { getAllItems, getSpecificProduct } from "@/services/dataServece";
 import React from "react";
-import { PiUserSwitchDuotone } from "react-icons/pi";
-import Image from "next/image";
-import { convertDriveLink } from "@/lib/helper/getImageUrl";
+import SwipComp from "../_Components/Swiper";
+import { FaLocationDot } from "react-icons/fa6";
+import { FaPhoneAlt } from "react-icons/fa";
+import { TbCategory } from "react-icons/tb";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { productId: string };
+}) {
+  const id = params.productId;
+  return { title: `product ${id}` };
+}
+
+// generate static params to convert this page from dynamic to static
+export async function generateStaticParams() {
+  const products = await getAllItems();
+  console.log(products);
+
+  const ids = products?.map((product) => ({ productId: String(product.id) }));
+
+  return ids;
+}
 
 export default async function page({
   params,
@@ -12,9 +32,8 @@ export default async function page({
   const productId = params.productId;
 
   const product = await getSpecificProduct(productId);
-  console.log(product);
 
-  if (!product) return;
+  // if (!product) return;
 
   const {
     category,
@@ -29,32 +48,22 @@ export default async function page({
     price,
   } = product;
 
-  console.log(main_img);
-
-  // PLACEHOLDER DATA
-  const cabin = {
-    id: 89,
-    name: "001",
-    maxCapacity: 2,
-    regularPrice: 250,
-    discount: 0,
-    description:
-      "Discover the ultimate luxury getaway for couples in the cozy wooden cabin 001. Nestled in a picturesque forest, this stunning cabin offers a secluded and intimate retreat. Inside, enjoy modern high-quality wood interiors, a comfortable seating area, a fireplace and a fully-equipped kitchen. The plush king-size bed, dressed in fine linens guarantees a peaceful nights sleep. Relax in the spa-like shower and unwind on the private deck with hot tub.",
-    image:
-      "https://dclaevazetcjjkrzczpc.supabase.co/storage/v1/object/public/cabin-images/cabin-001.jpg",
-  };
-
-  const { id, maxCapacity, regularPrice, discount, image } = cabin;
+  const imageList = [img_1, img_2, img_3, img_4, main_img].filter(Boolean);
 
   return (
-    <div className='max-w-6xl mx-auto mt-8'>
-      <div className='grid grid-cols-[3fr_4fr] gap-20 border border-primary-800 py-3 px-10 mb-24'>
-        <div className='relative scale-[1.15] -translate-x-3'>
-          <Image fill src={`${convertDriveLink(main_img)}`} alt={name} />
+    <div className='max-w-fit md:max-w-4xl xl:max-w-6xl mx-auto mt-8'>
+      <div className='grid md:grid-cols-[3fr_4fr] gap-20 border border-primary-800 py-3 px-2 md:px-10 mb-24'>
+        {/* Swiper */}
+        <div className='static z-0 justify-self-center max-w-3xs sm:max-w-xs md:max-w-sm lg:max-w-md'>
+          <SwipComp images={imageList} scrAlt={description} />
         </div>
 
+        {/* product content */}
         <div>
-          <h3 className='text-accent-100 font-black text-7xl mb-5 translate-x-[-254px] bg-primary-950 p-6 pb-1 w-[150%]'>
+          <h3
+            className='text-primary-100 text-3xl bg-primary-800 text-center rounded-md py-1'
+            // className='text-primary-100 font-black text-6xl mb-5 translate-x-[-254px] bg-primary-600 p-6 pb-1 w-[150%]'
+          >
             {name}
           </h3>
 
@@ -62,19 +71,19 @@ export default async function page({
 
           <ul className='flex flex-col gap-4 mb-7'>
             <li className='flex gap-3 items-center'>
-              <PiUserSwitchDuotone className='h-5 w-5 text-primary-600' />
+              <TbCategory className='h-5 w-5 text-primary-600' />
               <span className='text-lg'>
-                Category : <span className='font-bold'>{category}</span> guests
+                : <span className='font-bold'>{category}</span>
               </span>
             </li>
             <li className='flex gap-3 items-center'>
               {/* <MapPinIcon className="h-5 w-5 text-primary-600" /> */}
-              <span className='text-lg'>
-                Our Location :<span className='font-bold'>El Marg</span> (cairo)
-              </span>
+              <FaLocationDot className='h-5 w-5 text-primary-600' />:
+              <span className='font-bold'>El Marg</span>{" "}
+              <span className='text-lg'>(cairo)</span>
             </li>
             <li className='flex gap-3 items-center'>
-              {/* <EyeSlashIcon  className="h-5 w-5 text-primary-600" /> */}
+              <FaPhoneAlt className='h-5 w-5 text-primary-600' />
               <span className='text-lg'>
                 phone <span className='font-bold'>01015947685</span>
               </span>

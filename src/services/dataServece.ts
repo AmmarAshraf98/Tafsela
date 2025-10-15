@@ -2,7 +2,7 @@ import { category } from "./../lib/types/category";
 import { product } from "@/lib/types/product_i";
 import { supabase } from "./supaBase";
 import { supaBaseError } from "@/lib/types/supabaseError";
-
+import { notFound } from "next/navigation";
 // get categories
 export const getCategories = async () => {
   const { data, error } = (await supabase.from("categories").select("*")) as {
@@ -19,7 +19,7 @@ export const getCategories = async () => {
 };
 
 // get all products
-export const getAllItems = async () => {
+export const getAllItems = async (): Promise<product[]> => {
   const { data, error } = (await supabase.from("items").select("*")) as {
     data: product[] | null;
     error: supaBaseError;
@@ -46,6 +46,7 @@ export const getSpecificProduct = async (id: string) => {
 
   if (error) {
     console.log(error.message);
+    notFound();
     throw new Error("Failed to load the product");
   }
 

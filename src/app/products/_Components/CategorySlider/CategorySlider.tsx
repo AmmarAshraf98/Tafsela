@@ -1,0 +1,73 @@
+import React from "react";
+import styles from "./category.module.css";
+import { SideNavigationLinks } from "@/lib/types/sideNAvigationKinks";
+import { GiAmpleDress, GiDiamondRing, GiHandheldFan } from "react-icons/gi";
+import { ImMagicWand } from "react-icons/im";
+import { MdStorefront } from "react-icons/md";
+import { FaHandHoldingHeart } from "react-icons/fa6";
+import CategoryItem from "./CategoryItem";
+
+const links: SideNavigationLinks[] = [
+  {
+    id: 1,
+    name: "All products",
+    href: "/products/",
+    icon: <MdStorefront />,
+  },
+  {
+    id: 2,
+    name: "Wedding Contract",
+    href: "/products/wedding-contract",
+    icon: <FaHandHoldingHeart />,
+  },
+  {
+    id: 3,
+    name: "Dresses",
+    href: "/products/dresses",
+    icon: <GiAmpleDress />,
+  },
+  {
+    id: 4,
+    name: "Ring Trays",
+    href: "/products/trays",
+    icon: <GiDiamondRing />,
+  },
+  {
+    id: 5,
+    icon: <ImMagicWand />,
+    name: "Resin",
+    href: "/products/resin",
+  },
+  {
+    id: 6,
+    name: " Bride Mirror",
+    href: "/products/mirror",
+    icon: <FaHandHoldingHeart />,
+  },
+  {
+    id: 7,
+    name: "Hand Fan",
+    href: "/products/fan",
+    icon: <GiHandheldFan />,
+  },
+];
+
+function CategorySlider() {
+  return (
+    <>
+      <h2 className='md:text-3xl text-2xl capitalize text-primary-600 font-semibold'>
+        our category
+      </h2>
+
+      <ul
+        className={`flex gap-3 pb-3 overflow-x-auto ${styles["custom-scrollbar"]}  mb-8`}
+      >
+        {links.map((category) => (
+          <CategoryItem category={category} key={category.id} />
+        ))}
+      </ul>
+    </>
+  );
+}
+
+export default CategorySlider;
