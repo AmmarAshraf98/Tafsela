@@ -17,7 +17,6 @@ export async function generateMetadata({
 // generate static params to convert this page from dynamic to static
 export async function generateStaticParams() {
   const products = await getAllItems();
-  console.log(products);
 
   const ids = products?.map((product) => ({ productId: String(product.id) }));
 
@@ -33,7 +32,7 @@ export default async function page({
 
   const product = await getSpecificProduct(productId);
 
-  // if (!product) return;
+  if (!product) return;
 
   const {
     category,

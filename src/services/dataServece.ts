@@ -15,14 +15,14 @@ export const getCategories = async () => {
     throw new Error("Failed to load categories");
   }
 
-  return data;
+  return data ?? [];
 };
 
 // get all products
 export const getAllItems = async (): Promise<product[]> => {
   const { data, error } = (await supabase.from("items").select("*")) as {
     data: product[] | null;
-    error: supaBaseError;
+    error: supaBaseError | null;
   };
 
   if (error) {
@@ -30,7 +30,7 @@ export const getAllItems = async (): Promise<product[]> => {
     throw new Error("Failed to fetch products");
   }
 
-  return data;
+  return data || [];
 };
 
 // get single product by id
