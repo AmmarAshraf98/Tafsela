@@ -1,12 +1,17 @@
 import { Metadata } from "next";
 import React from "react";
 import SectionHeader from "./_Components/SectionHeader";
+import { getAllItems } from "@/services/dataServece";
+
+export const revalidate = 86400;
 
 export const metadata: Metadata = {
   title: "Category",
 };
 
-function page() {
+async function page() {
+  const items_number = await getAllItems();
+
   return (
     <section>
       <SectionHeader
@@ -19,9 +24,7 @@ function page() {
 
       <div>
         <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laudantium
-          ullam reiciendis tempore quo sunt quam quod rem quidem eum autem omnis
-          earum, sit cum veniam architecto, aliquam pariatur eos natus?
+          Discover more than {items_number.length} items from our Luxury store
         </p>
       </div>
     </section>
