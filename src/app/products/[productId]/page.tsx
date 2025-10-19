@@ -1,15 +1,17 @@
 import { getAllItems, getSpecificProduct } from "@/services/dataServece";
-import React from "react";
 import SwipComp from "../_Components/Swiper";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaPhoneAlt } from "react-icons/fa";
 import { TbCategory } from "react-icons/tb";
+import { Metadata } from "next";
+
+export const revalidate = 3600;
 
 export async function generateMetadata({
   params,
 }: {
   params: { productId: string };
-}) {
+}): Promise<Metadata> {
   const id = params.productId;
   return { title: `product ${id}` };
 }
@@ -23,7 +25,7 @@ export async function generateStaticParams() {
   return ids;
 }
 
-export default async function page({
+export default async function Page({
   params,
 }: {
   params: { productId: string };
@@ -32,7 +34,7 @@ export default async function page({
 
   const product = await getSpecificProduct(productId);
 
-  if (!product) return;
+  if (!product) return null;
 
   const {
     category,

@@ -4,6 +4,8 @@ import MirrorList from "../_Components/MirrorList";
 import Spinner from "@/_Components/Spinner";
 import SectionHeader from "../_Components/SectionHeader";
 
+export const revalidate = 3600;
+
 export const metadata: Metadata = {
   title: " Bride Mirror",
 };

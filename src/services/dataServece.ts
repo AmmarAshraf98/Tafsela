@@ -3,6 +3,7 @@ import { product } from "@/lib/types/product_i";
 import { supabase } from "./supaBase";
 import { supaBaseError } from "@/lib/types/supabaseError";
 import { notFound } from "next/navigation";
+
 // get categories
 export const getCategories = async () => {
   const { data, error } = (await supabase.from("categories").select("*")) as {
