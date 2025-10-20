@@ -94,9 +94,7 @@ export default async function Page({
       </div>
 
       <div>
-        <h2 className='text-5xl font-semibold text-center'>
-          Reserve today. Pay on arrival.
-        </h2>
+        <h6 className='text-5xl font-semibold text-center'>Reserve today.</h6>
       </div>
     </div>
   );

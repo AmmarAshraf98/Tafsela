@@ -6,6 +6,8 @@ import React from "react";
 
 function CategoryItem({ category }: { category: SideNavigationLinks }) {
   const pathName = usePathname();
+  console.log(pathName);
+
   return (
     <li
       className={`capitalize bg-primary-10 flex-shrink-0 
@@ -13,7 +15,7 @@ function CategoryItem({ category }: { category: SideNavigationLinks }) {
   text-primary-200 cursor-pointer border border-primary-800 
   px-3 py-1.5 rounded-full transition-all duration-300 
   hover:text-primary-900 hover:bg-primary-400 ${
-    pathName === category.href ? " bg-primary-500" : ""
+    pathName === category.href ? " bg-primary-400 text-primary-900" : ""
   }`}
     >
       <Link href={category.href} className={`flex items-center gap-1`}>

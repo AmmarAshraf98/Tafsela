@@ -11,4 +11,5 @@ export interface product {
   img_3: string;
   img_4: string;
   created_at: string;
+  priceAfterSale: number;
 }

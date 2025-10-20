@@ -7,7 +7,8 @@ import React from "react";
 // import { BiUser } from "react-icons/bi";
 
 function ProductCard({ product }: { product: product }) {
-  const { id, name, description, price, on_sale, main_img } = product;
+  const { id, name, description, price, on_sale, main_img, priceAfterSale } =
+    product;
   const res = convertDriveLink(main_img);
   //   const x = product;
   // console.log("name=>", name);
@@ -48,7 +49,7 @@ function ProductCard({ product }: { product: product }) {
       </div>
 
       {/* PRODUCT_CONTENT */}
-      <div className='pt-5 pb-4 px-7 bg-primary-900 flex-grow mb-[50px]'>
+      <div className='pt-5 pb-4 px-3 md:px-5 bg-primary-900 flex-grow mb-[50px]'>
         <h3 className='text-accent-500 font-semibold text-xl mb-3'>
           Cabin {name}
         </h3>
@@ -65,7 +66,7 @@ function ProductCard({ product }: { product: product }) {
             <>
               <span className='text-2xl font-[350]'>${price}</span>
               <span className='line-through font-semibold text-primary-500'>
-                ${price}
+                ${priceAfterSale}
               </span>
             </>
           ) : (

@@ -14,6 +14,6 @@ function layout({ children }: Readonly<{ children: React.ReactNode }>) {
       </div>
     </section>
   );
-} 
+}
 
 export default layout;

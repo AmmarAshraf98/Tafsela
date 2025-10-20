@@ -1,8 +1,8 @@
 import { Metadata } from "next";
 import React, { Suspense } from "react";
-import MirrorList from "../_Components/MirrorList";
 import Spinner from "@/_Components/Spinner";
 import SectionHeader from "../_Components/SectionHeader";
+import ItemsList from "../_Components/ItemsList";
 
 export const revalidate = 3600;
 
@@ -20,7 +20,7 @@ async function page() {
       />
 
       <Suspense fallback={<Spinner />}>
-        <MirrorList />
+        <ItemsList categoryID='2' />
       </Suspense>
     </section>
   );

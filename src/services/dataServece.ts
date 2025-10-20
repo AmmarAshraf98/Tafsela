@@ -31,6 +31,8 @@ export const getAllItems = async (): Promise<product[]> => {
     throw new Error("Failed to fetch products");
   }
 
+  console.log(data);
+
   return data || [];
 };
 
@@ -47,9 +49,33 @@ export const getSpecificProduct = async (id: string) => {
 
   if (error) {
     console.log(error.message);
+    // display not-found page instead error page
     notFound();
     throw new Error("Failed to load the product");
   }
 
   return data;
+};
+
+// get product by  category
+export const getAllProductForCategory = async (
+  categoryId: string
+): Promise<product[]> => {
+  const { data, error } = (await supabase
+    .from("items")
+    .select("*")
+    .eq("category", categoryId)) as {
+    data: product[] | null;
+    error: supaBaseError;
+  };
+
+  if (error) {
+    console.log("Error Fetching data", error.message);
+
+    throw new Error("Failed to fetch Items");
+  }
+
+  console.log("data according to category", data);
+
+  return data || [];
 };
