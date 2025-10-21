@@ -31,8 +31,6 @@ export const getAllItems = async (): Promise<product[]> => {
     throw new Error("Failed to fetch products");
   }
 
-  console.log(data);
-
   return data || [];
 };
 
@@ -74,8 +72,6 @@ export const getAllProductForCategory = async (
 
     throw new Error("Failed to fetch Items");
   }
-
-  console.log("data according to category", data);
 
   return data || [];
 };

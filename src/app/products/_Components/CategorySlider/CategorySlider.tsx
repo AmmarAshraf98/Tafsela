@@ -11,7 +11,7 @@ const links: SideNavigationLinks[] = [
   {
     id: 1,
     name: "All products",
-    href: "/products/",
+    href: "/products",
     icon: <MdStorefront />,
   },
   {
@@ -55,12 +55,12 @@ const links: SideNavigationLinks[] = [
 function CategorySlider() {
   return (
     <>
-      <h2 className='md:text-3xl text-2xl capitalize text-primary-600 font-semibold'>
+      <h2 className='md:text-3xl text-2xl capitalize text-primary-600 font-semibold mb-3'>
         our category
       </h2>
 
       <ul
-        className={`flex gap-3 pb-3 overflow-x-auto ${styles["custom-scrollbar"]}  mb-8`}
+        className={`lg:flex-col flex-row flex gap-3 pb-3 overflow-x-auto ${styles["custom-scrollbar"]}  mb-8 pb-2`}
       >
         {links.map((category) => (
           <CategoryItem category={category} key={category.id} />

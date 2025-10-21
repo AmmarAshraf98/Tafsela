@@ -3,12 +3,22 @@ import React, { Suspense } from "react";
 import SectionHeader from "../_Components/SectionHeader";
 import Spinner from "@/_Components/Spinner";
 import ItemsList from "../_Components/ItemsList";
+import { handleFilter } from "@/lib/helper/FilterPrice";
+import Filteration from "../_Components/Filteration";
 
 export const metadata: Metadata = {
   title: " Resin",
 };
 
-function page() {
+async function page({
+  searchParams,
+}: {
+  searchParams: Promise<{ price: string }>;
+}) {
+  const filter = (await searchParams).price;
+
+  const filtration = handleFilter(filter);
+
   return (
     <section>
       <SectionHeader
@@ -17,8 +27,12 @@ function page() {
                 to embody your beauty and style.'
       />
 
-      <Suspense fallback={<Spinner />}>
-        <ItemsList categoryID='5' />
+      <div className='flex justify-end mb-3 md:mb-5'>
+        <Filteration />
+      </div>
+
+      <Suspense fallback={<Spinner />} key={filter}>
+        <ItemsList categoryID='5' filter={filtration} />
       </Suspense>
     </section>
   );

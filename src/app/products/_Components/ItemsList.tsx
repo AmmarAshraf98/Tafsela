@@ -1,11 +1,14 @@
 import React from "react";
 import ProductCard from "@/_Components/ProductCard/ProductCard";
 import { getAllItems, getAllProductForCategory } from "@/services/dataServece";
+import { product } from "@/lib/types/product_i";
 
 export default async function ItemsList({
   categoryID,
+  filter,
 }: {
   categoryID: string;
+  filter: string;
 }) {
   let data;
 
@@ -14,15 +17,29 @@ export default async function ItemsList({
   } else {
     data = await getAllProductForCategory(categoryID);
   }
-  // const data =
-  //   (await categoryID) === ""
-  //     ? getAllItems()
-  //     : getAllProductForCategory(categoryID);
+
+  let displayedItems: product[] = [];
+
+  if (filter === "all") displayedItems = data;
+  if (filter === "low") displayedItems = data.filter((p) => p.price < 500);
+  if (filter === "medium")
+    displayedItems = data.filter((p) => p.price > 500 && p.price < 1000);
+  if (filter === "heigh") displayedItems = data.filter((p) => p.price > 1000);
+
+  if (!displayedItems.length)
+    return (
+      <div className='flex items-center capitalize md:text-lg justify-center py-2 px-5'>
+        <p>
+          These items are currently{" "}
+          <span className='text-primary-500 font-bold'> out of stock 🛍️</span>
+        </p>
+      </div>
+    );
 
   return (
     <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 xl:gap-8'>
-      {data?.length &&
-        data.map((product) => (
+      {displayedItems?.length &&
+        displayedItems.map((product) => (
           <ProductCard product={product} key={product.id} />
         ))}
     </div>

@@ -18,7 +18,7 @@ export default async function Home() {
           welcome to tafsela.
         </h1>
         <Link
-          href='/best-seller'
+          href='/products'
           className='bg-primary-600 px-8 py-5 text-primary-900 text-lg font-semibold hover:bg-primary-200 transition-all'
         >
           explore luxury items
