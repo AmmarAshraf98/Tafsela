@@ -34,6 +34,15 @@ function Navigation() {
             Blogs
           </Link>
         </li>
+
+        <li>
+          <Link
+            href='/dashboard'
+            className='hover:text-primary-200 duration-300'
+          >
+            Dashboard
+          </Link>
+        </li>
       </ul>
     </nav>
   );

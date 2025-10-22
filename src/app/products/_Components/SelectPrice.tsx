@@ -13,14 +13,15 @@ function SelectPrice() {
   // get the page pathName
   const path = usePathname();
 
-  // get the current url
+  // get the current url just for reading
   const currentParams = useSearchParams();
 
   //handle the routing for programatic navigation without loading
   const router = useRouter();
 
+  // handle change when select an option
   const handleChange = (v: string) => {
-    //js function to handle url
+    //js function to handle url that can read and write
     const params = new URLSearchParams(currentParams);
     // set the new value
     params.set("price", v);

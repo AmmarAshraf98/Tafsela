@@ -60,7 +60,7 @@ function CategorySlider() {
       </h2>
 
       <ul
-        className={`lg:flex-col flex-row flex gap-3 pb-3 overflow-x-auto ${styles["custom-scrollbar"]}  mb-8 pb-2`}
+        className={`lg:flex-col flex-row flex gap-3 overflow-x-auto ${styles["custom-scrollbar"]}  mb-8 pb-2`}
       >
         {links.map((category) => (
           <CategoryItem category={category} key={category.id} />

@@ -213,3 +213,40 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* ======================================== SCroll bar for table at dashbpard =============================== */
+
+/* make sure this is in globals.css (not a module), or use :global(...) in module */
+.custom-scrollbar {
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: var(--color-primary-700) transparent; /* Firefox */
+}
+
+/* horizontal scrollbar thickness */
+.custom-scrollbar::-webkit-scrollbar {
+  height: 8px; /* use 6-12px for visible effect */
+}
+
+/* thumb (the movable part) */
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--color-primary-700);
+  border-radius: 9999px;
+  border: 2px solid transparent; /* gives a padding look */
+  background-clip: padding-box;
+}
+
+/* hover */
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary-700);
+}
+
+/* track (background) */
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* hide arrows if any */
+.custom-scrollbar::-webkit-scrollbar-button {
+  display: none !important;
+}
