@@ -250,3 +250,12 @@
 .custom-scrollbar::-webkit-scrollbar-button {
   display: none !important;
 }
+
+/* slider pagination */
+.swiper-pagination-bullet {
+  background: var(
+    --swiper-pagination-bullet-inactive-color,
+    #2d1e11
+  ) !important;
+  opacity: var(--swiper-pagination-bullet-inactive-opacity, 0.5) !important;
+}

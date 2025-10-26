@@ -1,17 +1,17 @@
 "use client";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-import Image from "next/image";
 import { convertDriveLink } from "@/lib/helper/getImageUrl";
-import { Autoplay, Pagination } from "swiper/modules";
+import Image from "next/image";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import { Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 function SwipComp({ images, scrAlt }: { images: string[]; scrAlt: string }) {
   return (
     <Swiper
       loop
-      modules={[Pagination, Autoplay]}
+      modules={[Pagination]}
       autoplay={{ delay: 2500, disableOnInteraction: true }}
       spaceBetween={10}
       //   Handle Dotts Style
@@ -21,17 +21,17 @@ function SwipComp({ images, scrAlt }: { images: string[]; scrAlt: string }) {
           return `
             <span class="${className}" 
               style="
-                width: 12px;
-                height: 12px;
+                width: 10px;
+                height: 10px;
                 display: inline-flex;
                 align-items: center;
                 justify-content: center;
                 border-radius: 50%;
                 margin: 0 4px;
                 overflow: hidden;
-                border: 2px solid transparent;
+                border: 2px solid #2d1e11;
                 transition: all 0.3s ease;
-                background-color: #2d1e11;
+                background-color: #fff;
               ">
             </span>`;
         },
@@ -44,7 +44,7 @@ function SwipComp({ images, scrAlt }: { images: string[]; scrAlt: string }) {
             el.style.border = "2px solid #fff";
             el.style.transform = "scale(1.15)";
           } else {
-            el.style.border = "2px solid transparent";
+            el.style.border = "2px solid #2d1e11";
             el.style.transform = "scale(1)";
           }
         });
@@ -52,10 +52,9 @@ function SwipComp({ images, scrAlt }: { images: string[]; scrAlt: string }) {
       className='rounded-md shadow-lg'
     >
       {images.map((img, index) => (
-        <SwiperSlide key={index} className='relative aspect-square'>
+        <SwiperSlide key={index} className='relative w-full aspect-square'>
           <Image
             src={convertDriveLink(img)}
-            sizes=''
             fill
             alt={`${scrAlt}-${index}`}
             className='object-cover rounded-md'

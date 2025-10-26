@@ -1,12 +1,11 @@
-import { Metadata } from "next";
-import React, { Suspense } from "react";
-import SectionHeader from "./_Components/SectionHeader";
-import { getAllItems } from "@/services/dataServece";
 import Spinner from "@/_Components/Spinner";
-import ItemsList from "./_Components/ItemsList";
 import { handleFilter } from "@/lib/helper/FilterPrice";
-import Filteration from "./_Components/Filteration";
+import { Metadata } from "next";
+import { Suspense } from "react";
+import ItemsList from "./_Components/ItemsList";
+import SectionHeader from "./_Components/SectionHeader";
 
+//====> was needed for ISR but after using searchParams it's not needed cause the page is now dynamic
 // export const revalidate = 86400;
 
 export const metadata: Metadata = {
@@ -18,11 +17,10 @@ async function page({
 }: {
   searchParams: Promise<{ price: string }>;
 }) {
+  // to use searchParams just be sure to make the function async
   const filter = (await searchParams).price;
 
   const filtration = handleFilter(filter);
-
-  const items_number = await getAllItems();
 
   return (
     <section>
@@ -33,19 +31,6 @@ async function page({
           your special day. Discover the perfect pieces to complement your
           unique style and make your moments truly unforgettable.'
       />
-
-      <div className='flex items-center justify-between'>
-        <p className='text-xs md:text-base'>
-          Discover more than
-          <span className='text-primary-500 font-bold mx-0.5'>
-            {items_number.length}
-          </span>
-          items
-        </p>
-        <Filteration />
-      </div>
-
-      <div className='flex justify-end mb-8'></div>
 
       <Suspense fallback={<Spinner />} key={filter}>
         <ItemsList categoryID='' filter={filtration} />

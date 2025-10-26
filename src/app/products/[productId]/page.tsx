@@ -4,6 +4,9 @@ import { FaLocationDot } from "react-icons/fa6";
 import { FaPhoneAlt } from "react-icons/fa";
 import { TbCategory } from "react-icons/tb";
 import { Metadata } from "next";
+import { LuMapPin } from "react-icons/lu";
+import { MdOutlinePhoneInTalk } from "react-icons/md";
+import { getCategoryName } from "@/lib/helper/getCategoryName";
 
 export const revalidate = 3600;
 
@@ -53,16 +56,18 @@ export default async function Page({
 
   return (
     <div className='max-w-fit md:max-w-4xl xl:max-w-6xl mx-auto mt-8'>
-      <div className='grid md:grid-cols-[3fr_4fr] gap-20 border border-primary-800 py-3 px-2 md:px-10 mb-24'>
+      <div className='grid md:grid-cols-[3fr_4fr] gap-4 sm:gap-5 md:gap-8 lg:gap-12 border border-primary-800 py-3 px-1.5 md:px-4 mb-24'>
         {/* Swiper */}
-        <div className='static z-0 justify-self-center max-w-3xs sm:max-w-xs md:max-w-sm lg:max-w-md'>
-          <SwipComp images={imageList} scrAlt={description} />
+        <div className='w-full justify-self-center overflow-hidden'>
+          <div className='max-w-full'>
+            <SwipComp images={imageList} scrAlt={description} />
+          </div>
         </div>
 
         {/* product content */}
         <div>
           <h3
-            className='text-primary-100 text-3xl bg-primary-800 text-center rounded-md py-1'
+            className='text-primary-100  mb-1.5  text-lg md:text-xl lg:text-3xl bg-primary-800 text-center rounded-md py-1 px-0.5'
             // className='text-primary-100 font-black text-6xl mb-5 translate-x-[-254px] bg-primary-600 p-6 pb-1 w-[150%]'
           >
             {name}
@@ -70,24 +75,34 @@ export default async function Page({
 
           <p className='text-lg text-primary-300 mb-10'>{description}</p>
 
+          {/*  information list */}
           <ul className='flex flex-col gap-4 mb-7'>
             <li className='flex gap-3 items-center'>
               <TbCategory className='h-5 w-5 text-primary-600' />
               <span className='text-lg'>
-                : <span className='font-bold'>{category}</span>
+                :
+                <strong className='capitalize'>
+                  {getCategoryName(category)}
+                </strong>
               </span>
             </li>
             <li className='flex gap-3 items-center'>
               {/* <MapPinIcon className="h-5 w-5 text-primary-600" /> */}
-              <FaLocationDot className='h-5 w-5 text-primary-600' />:
+              <LuMapPin className='h-5 w-5 text-primary-600' />:
               <span className='font-bold'>El Marg</span>{" "}
               <span className='text-lg'>(cairo)</span>
             </li>
             <li className='flex gap-3 items-center'>
-              <FaPhoneAlt className='h-5 w-5 text-primary-600' />
-              <span className='text-lg'>
-                phone <span className='font-bold'>01015947685</span>
-              </span>
+              <MdOutlinePhoneInTalk className='h-5 w-5 text-primary-600' />:
+              <a
+                href='https://wa.me/201015947685'
+                target='_blank'
+                // for security reasons when using target blank
+                rel='noopener noreferrer'
+                className='text-lg hover:underline'
+              >
+                <span className='font-bold'>01015947685</span>
+              </a>
             </li>
           </ul>
         </div>

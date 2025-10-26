@@ -4,7 +4,6 @@ import SectionHeader from "../_Components/SectionHeader";
 import Spinner from "@/_Components/Spinner";
 import ItemsList from "../_Components/ItemsList";
 import { handleFilter } from "@/lib/helper/FilterPrice";
-import Filteration from "../_Components/Filteration";
 
 export const metadata: Metadata = {
   title: " Wedding Contract",
@@ -26,10 +25,6 @@ async function page({
         description='Timeless elegance, perfectly reflected. Bespoke Bride Mirrors crafted
                 to embody your beauty and style.'
       />
-
-      <div className='flex justify-end mb-3 md:mb-5'>
-        <Filteration />
-      </div>
 
       <Suspense fallback={<Spinner />} key={filter}>
         <ItemsList categoryID='3' filter={filtration} />

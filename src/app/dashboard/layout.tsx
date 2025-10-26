@@ -7,7 +7,7 @@ function layout({ children }: { children: Readonly<React.ReactNode> }) {
       <aside className='flex justify-end md:block'>
         <DashSidebar />
       </aside>
-      <div className='overflow-hidden max-h-dvh'>{children}</div>
+      <section className='max-h-dvh'>{children}</section>
     </div>
   );
 }
