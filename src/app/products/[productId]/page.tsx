@@ -1,12 +1,10 @@
+import { getCategoryName } from "@/lib/helper/getCategoryName";
 import { getAllItems, getSpecificProduct } from "@/services/dataServece";
-import SwipComp from "../_Components/Swiper";
-import { FaLocationDot } from "react-icons/fa6";
-import { FaPhoneAlt } from "react-icons/fa";
-import { TbCategory } from "react-icons/tb";
 import { Metadata } from "next";
 import { LuMapPin } from "react-icons/lu";
 import { MdOutlinePhoneInTalk } from "react-icons/md";
-import { getCategoryName } from "@/lib/helper/getCategoryName";
+import { TbCategory } from "react-icons/tb";
+import SwipComp from "../_Components/Swiper";
 
 export const revalidate = 3600;
 

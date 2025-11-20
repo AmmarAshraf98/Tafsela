@@ -4,6 +4,7 @@ import { SideNavigationLinks } from "@/lib/types/sideNAvigationKinks";
 import { RiAddLine } from "react-icons/ri";
 import { FaUsers } from "react-icons/fa6";
 import { IoStorefrontOutline } from "react-icons/io5";
+import SignOutButton from "@/_Components/SignoutButton";
 
 const links: SideNavigationLinks[] = [
   {
@@ -32,6 +33,7 @@ function DashLinks() {
       {links.map((ele, index) => (
         <DashLink dashLink={ele} key={index} />
       ))}
+      <SignOutButton />
     </ul>
   );
 }
