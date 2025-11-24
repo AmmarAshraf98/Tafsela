@@ -1,7 +1,14 @@
-import NextAuth from "next-auth";
+// import NextAuth from "next-auth";
+import NextAuth, { type NextAuthConfig, type Session } from "next-auth";
+
 import Google from "next-auth/providers/google";
 
-const authConfig = {
+interface AuthorizedCallbackParams {
+  auth: Session | null;
+  request: Request;
+}
+
+const authConfig: NextAuthConfig = {
   providers: [
     Google({
       clientId: process.env.AUTH_GOOGLE_ID!,
@@ -14,10 +21,9 @@ const authConfig = {
     auth => is the current session ( user data )
     request => request information
     */
-    authorized({ auth, request }) {
-      console.log("request=>", request);
 
-      return !!auth?.user;
+    authorized({ auth, request }: AuthorizedCallbackParams) {
+      return auth?.user?.email == "ammarashraf230@gmail.com";
     },
   },
 
@@ -32,5 +38,3 @@ export const {
   signOut,
   handlers: { GET, POST },
 } = NextAuth(authConfig);
-
-console.log(GET, POST);

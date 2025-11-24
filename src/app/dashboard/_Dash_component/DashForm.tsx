@@ -20,7 +20,7 @@ function DashForm() {
   };
 
   return (
-    <div className='px-4 mx-auto max-w-2xl'>
+    <div className='px-4 mx-auto max-w-2xl min-h-screen'>
       <h2 className='mb-4 text-xl font-bold capitalize dark:text-primary-300'>
         Add a new product
       </h2>
@@ -131,12 +131,22 @@ function DashForm() {
           {/* secon image  */}
           {[...Array(imgInput)].map((_, index) => (
             <div key={index}>
-              <label
-                htmlFor='item-weight'
-                className='block mb-2 text-sm font-medium text-primary-600 dark:text-primary-300'
-              >
-                image
-              </label>
+              <div className='flex items-center justify-between'>
+                <label
+                  htmlFor='item-weight'
+                  className='block mb-2 text-sm font-medium text-primary-600 dark:text-primary-300'
+                >
+                  image
+                </label>
+                {index >= 1 && (
+                  <button
+                    className='w-8 bg-primary-700 cursor-pointer rounded-md hover:bg-primary-400 transition-all duration-200'
+                    onClick={handleRemoveInput}
+                  >
+                    -
+                  </button>
+                )}
+              </div>
               <input
                 type='text'
                 name='item-weight'

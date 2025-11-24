@@ -1,16 +1,9 @@
-import { auth } from "@/lib/auth";
-import Image from "next/image";
+import { sessionType } from "@/lib/types/session";
+import { DoorClosedIcon, DoorOpenIcon } from "lucide-react";
 import Link from "next/link";
-import React from "react";
 
-async function Navigation() {
-  const session = await auth();
-
-  let userImg = null;
-  if (session) {
-    userImg = session.user?.image;
-  }
-
+function Navigation({ session }: { session: sessionType | null }) {
+  const isAdmin = session?.user?.email === "ammarashraf230@gmail.com";
   return (
     <nav className='md:text-xl hidden md:block'>
       <ul className='flex gap-12 items-center'>
@@ -49,7 +42,7 @@ async function Navigation() {
             Blogs
           </Link>
         </li> */}
-        {userImg && (
+        {/* {userImg && (
           <li>
             <Link
               href='/blogs'
@@ -64,14 +57,15 @@ async function Navigation() {
               <span>{session?.user?.name}</span>
             </Link>
           </li>
-        )}
+        )} */}
 
         <li>
           <Link
             href='/dashboard'
             className='text-sm hover:text-primary-200 duration-300'
           >
-            Dashboard
+            {isAdmin ? <DoorOpenIcon /> : <DoorClosedIcon />}
+            {/* Dashboard */}
           </Link>
         </li>
       </ul>

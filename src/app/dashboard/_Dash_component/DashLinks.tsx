@@ -29,7 +29,7 @@ const links: SideNavigationLinks[] = [
 
 function DashLinks() {
   return (
-    <ul className={`md:flex-col flex-row flex gap-0.5`}>
+    <ul className={`md:flex-col flex-row flex gap-0.5 h-full`}>
       {links.map((ele, index) => (
         <DashLink dashLink={ele} key={index} />
       ))}
