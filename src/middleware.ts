@@ -9,11 +9,23 @@ export function middleware(request: Request) {
 }
   */
 
-import { auth } from "./lib/auth";
-
+/*
 // just using auth method that came from nextauth at auth file we just created
-
 export const middleware = auth;
+*/
+
+// the same way with nextAuth just add a little logic inside the auth method
+import { auth } from "./lib/auth";
+export default auth((req) => {
+  const isLoggedIn = !!req.auth?.user;
+
+  const isTryingToAccessDashboard =
+    req.nextUrl.pathname.startsWith("/dashboard");
+
+  if (!isLoggedIn && isTryingToAccessDashboard) {
+    return Response.redirect(new URL("/login", req.url));
+  }
+});
 
 export const config = {
   matcher: ["/dashboard/:path*"],
