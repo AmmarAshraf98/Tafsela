@@ -49,6 +49,8 @@ export const getSpecificProduct = async (id: string) => {
     console.log(error.message);
     // display not-found page instead error page
     notFound();
+
+    // that will invoke error page
     throw new Error("Failed to load the product");
   }
 

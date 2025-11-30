@@ -24,7 +24,7 @@ async function layout({ children }: { children: Readonly<React.ReactNode> }) {
       <aside className='flex justify-end md:block '>
         <DashSidebar />
       </aside>
-      <section className='max-h-dvh'>{children}</section>
+      <section className='min-h-dvh overflow-auto'>{children}</section>
     </div>
   );
 }

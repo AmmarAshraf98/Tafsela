@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 
 function CheckBoxCom() {
+  const [checked, setChecked] = useState(false);
   return (
     <div className='flex items-center border border-primary-700 rounded-sm ps-2'>
       <input
         id='sale'
         type='checkbox'
-        value=''
         name='on_sale'
         className='w-3 h-3 text-primary-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-primary-800 focus:ring-2 dark:bg-primary-700 checked:accent-primary-700'
+        checked={checked}
+        onChange={() => setChecked((prev) => !prev)}
       />
       <label
         htmlFor='sale'

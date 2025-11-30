@@ -11,7 +11,7 @@ import {
 
 function SelectComponent() {
   return (
-    <Select>
+    <Select name='category'>
       {/* الزرار اللي بيعرض القيمة المختارة */}
       <SelectTrigger className='w-full bg-primary-900 border border-primary-700 text-primary-200 focus:ring-2 focus:ring-primary-500 data-[placeholder]:text-primary-300'>
         <SelectValue placeholder='Select Category' />

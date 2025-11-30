@@ -1,12 +1,12 @@
 // import NextAuth from "next-auth";
-import NextAuth, { type NextAuthConfig, type Session } from "next-auth";
+import NextAuth, { type NextAuthConfig } from "next-auth";
 
 import Google from "next-auth/providers/google";
 
-interface AuthorizedCallbackParams {
-  auth: Session | null;
-  request: Request;
-}
+// interface AuthorizedCallbackParams {
+//   auth: Session | null;
+//   request: Request;
+// }
 
 const authConfig: NextAuthConfig = {
   providers: [
