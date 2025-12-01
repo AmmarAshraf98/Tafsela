@@ -1,10 +1,9 @@
-import React from "react";
-import DashLink from "./DashLink";
+import SignOutButton from "@/_Components/SignoutButton";
 import { SideNavigationLinks } from "@/lib/types/sideNAvigationKinks";
-import { RiAddLine } from "react-icons/ri";
 import { FaUsers } from "react-icons/fa6";
 import { IoStorefrontOutline } from "react-icons/io5";
-import SignOutButton from "@/_Components/SignoutButton";
+import { RiAddLine } from "react-icons/ri";
+import DashLink from "./DashLink";
 
 const links: SideNavigationLinks[] = [
   {
@@ -15,14 +14,14 @@ const links: SideNavigationLinks[] = [
   },
   {
     id: 2,
+    icon: <IoStorefrontOutline />,
     name: "all store",
-    icon: <FaUsers />,
     href: "/dashboard/allstore",
   },
   {
     id: 3,
     name: "all usres",
-    icon: <IoStorefrontOutline />,
+    icon: <FaUsers />,
     href: "/dashboard/users",
   },
 ];

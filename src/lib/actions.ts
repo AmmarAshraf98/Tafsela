@@ -1,9 +1,9 @@
 "use server";
 
 import { supabase } from "@/services/supaBase";
+import { revalidatePath } from "next/cache";
 import { auth, signIn, signOut } from "./auth";
 import { checkAdmin } from "./helper/checkISAdmin";
-import { revalidatePath } from "next/cache";
 
 // Action to handle user sign-in with Google
 export async function signInAction() {
@@ -51,7 +51,7 @@ export async function addProductAction(formData: FormData) {
 
   const { error } = await supabase.from("items").insert(product).single();
 
-  if (error) throw new Error("Failed to add product", error);
+  if (error) throw new Error("Failed to add product");
   console.log("error message if can not adding product", error || error);
 
   // display success status to the client
@@ -89,8 +89,67 @@ export async function deleteProductAction(productId: number) {
 }
 
 // Action to handle updating a prodcut by Id
-export async function updateProductAction() {
-  console.log("updating...");
+export async function updateProductAction(formData: FormData) {
+  // authenticate user
+  const session = await auth();
+
+  if (!session) {
+    return { ok: false, error: "You must be signed in to delete a product" };
+  }
+
+  if (!session.user?.email || !checkAdmin(session.user.email)) {
+    return {
+      ok: false,
+      error: "You are not authorized to delete this product",
+    };
+  }
+
+  // basic fields
+  const name = formData.get("name") as string;
+  const price = Number(formData.get("price"));
+  const on_sale = formData.get("on_sale") === "on";
+  const priceAfterSale = Number(formData.get("priceAfterSale"));
+  const category = Number(formData.get("category"));
+  const main_img = formData.get("main_img") as string;
+  const description = formData.get("description") as string;
+  const id = Number(formData.get("id"));
+
+  // dynamic images: img_1, img_2, img_3...
+  const dynamicImages: Record<string, string> = {};
+
+  formData.forEach((value, key) => {
+    if (key.startsWith("img_")) {
+      dynamicImages[key] = value as string;
+    }
+  });
+
+  const updatedProduct = {
+    name,
+    price,
+    on_sale,
+    priceAfterSale,
+    category,
+    main_img,
+    ...dynamicImages,
+    description,
+  };
+
+  const { data, error } = await supabase
+    .from("items")
+    .update(updatedProduct)
+    .eq("id", id)
+    .select();
+
+  if (error) {
+    throw new Error("Failed To update product :(");
+    console.log("error", error);
+  }
+
+  // get the fresh data after updating
+  revalidatePath("/dashboard/allstore");
+
+  // navigate to allstore or display success status to the client
+  // ....
 }
 
 // ----------------------------------- END OF CRUD OPERATION FOR PRODUCTS ------------------------------------

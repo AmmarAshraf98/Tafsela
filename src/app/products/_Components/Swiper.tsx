@@ -49,7 +49,7 @@ function SwipComp({ images, scrAlt }: { images: string[]; scrAlt: string }) {
           }
         });
       }}
-      className='rounded-md shadow-lg'
+      className='shadow-lg'
     >
       {images.map((img, index) => (
         <SwiperSlide key={index} className='relative w-full aspect-square'>
@@ -57,7 +57,7 @@ function SwipComp({ images, scrAlt }: { images: string[]; scrAlt: string }) {
             src={convertDriveLink(img)}
             fill
             alt={`${scrAlt}-${index}`}
-            className='object-cover rounded-md'
+            className='object-cover'
           />
         </SwiperSlide>
       ))}

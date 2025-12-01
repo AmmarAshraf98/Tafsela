@@ -64,9 +64,9 @@ function ProductCard({ product }: { product: product }) {
         <p className='flex gap-3 justify-end items-baseline'>
           {on_sale ? (
             <>
-              <span className='text-2xl font-[350]'>${price}</span>
+              <span className='text-2xl font-[350]'> $ {priceAfterSale}</span>
               <span className='line-through font-semibold text-primary-500'>
-                ${priceAfterSale}
+                $ {price}
               </span>
             </>
           ) : (

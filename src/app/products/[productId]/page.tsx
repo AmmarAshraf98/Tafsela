@@ -4,6 +4,9 @@ import { Metadata } from "next";
 import { LuMapPin } from "react-icons/lu";
 import { MdOutlinePhoneInTalk } from "react-icons/md";
 import { TbCategory } from "react-icons/tb";
+import Badge from "../_Components/Badge";
+import ProductDescription from "../_Components/ProductDesc";
+import SalePrice from "../_Components/SalePrice";
 import SwipComp from "../_Components/Swiper";
 
 export const revalidate = 3600;
@@ -48,13 +51,16 @@ export default async function Page({
     img_4,
     on_sale,
     price,
+    priceAfterSale,
   } = product;
 
   const imageList = [img_1, img_2, img_3, img_4, main_img].filter(Boolean);
 
   return (
     <div className='max-w-fit md:max-w-4xl xl:max-w-6xl mx-auto mt-8'>
-      <div className='grid md:grid-cols-[3fr_4fr] gap-4 sm:gap-5 md:gap-8 lg:gap-12 border border-primary-800 py-3 px-1.5 md:px-4 mb-24'>
+      <div className='grid relative md:grid-cols-[3fr_4fr] gap-5 md:gap-7 lg:gap-9 border border-primary-800 py-3 px-1.5 md:px-4 mb-24'>
+        {on_sale && <Badge />}
+
         {/* Swiper */}
         <div className='w-full justify-self-center overflow-hidden'>
           <div className='max-w-full'>
@@ -64,50 +70,55 @@ export default async function Page({
 
         {/* product content */}
         <div>
-          <h3
-            className='text-primary-100  mb-1.5  text-lg md:text-xl lg:text-3xl bg-primary-800 text-center rounded-md py-1 px-0.5'
-            // className='text-primary-100 font-black text-6xl mb-5 translate-x-[-254px] bg-primary-600 p-6 pb-1 w-[150%]'
-          >
+          {/* Product Name */}
+          <h3 className='text-primary-100 tracking-wide  mb-1.5  text-lg md:text-xl lg:text-3xl bg-primary-800 text-center py-1 px-0.5'>
             {name}
           </h3>
 
-          <p className='text-lg text-primary-300 mb-10'>{description}</p>
+          {/*product description */}
+          <ProductDescription description={description} />
+
+          {/* Product Price */}
+          <SalePrice
+            price={price}
+            on_sale={on_sale}
+            priceAfterSale={priceAfterSale}
+          />
 
           {/*  information list */}
-          <ul className='flex flex-col gap-4 mb-7'>
-            <li className='flex gap-3 items-center'>
-              <TbCategory className='h-5 w-5 text-primary-600' />
-              <span className='text-lg'>
-                :
-                <strong className='capitalize'>
+          <ul className='flex flex-col gap-1'>
+            <li className='flex gap-2 items-center'>
+              <TbCategory className='size-3.5 sm:size-4 md:size-5  text-primary-600' />
+              :
+              <span className='text-base md:text-lg'>
+                <strong className='capitalize font-normal'>
                   {getCategoryName(category)}
                 </strong>
               </span>
             </li>
-            <li className='flex gap-3 items-center'>
-              {/* <MapPinIcon className="h-5 w-5 text-primary-600" /> */}
-              <LuMapPin className='h-5 w-5 text-primary-600' />:
-              <span className='font-bold'>El Marg</span>{" "}
-              <span className='text-lg'>(cairo)</span>
+
+            <li className='flex gap-2 items-center'>
+              {/* <MapPinIcon className="size-3.5 sm:size-4 md:size-5  text-primary-600" /> */}
+              <LuMapPin className='size-3.5 sm:size-4 md:size-5  text-primary-600' />
+              :<span className=''>El Marg</span>
+              <span className='text-base md:text-lg'>(cairo)</span>
             </li>
-            <li className='flex gap-3 items-center'>
-              <MdOutlinePhoneInTalk className='h-5 w-5 text-primary-600' />:
+
+            <li className='flex gap-2 items-center'>
+              <MdOutlinePhoneInTalk className='size-3.5 sm:size-4 md:size-5  text-primary-600' />
+              :
               <a
                 href='https://wa.me/201015947685'
                 target='_blank'
                 // for security reasons when using target blank
                 rel='noopener noreferrer'
-                className='text-lg hover:underline'
+                className='text-base md:text-lg hover:underline'
               >
-                <span className='font-bold'>01015947685</span>
+                <span className=''>order now</span>
               </a>
             </li>
           </ul>
         </div>
-      </div>
-
-      <div>
-        <h6 className='text-5xl font-semibold text-center'>Reserve today.</h6>
       </div>
     </div>
   );
