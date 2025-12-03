@@ -11,7 +11,7 @@ function Footer() {
         {/* Logo + Home */}
         <Link
           href='/'
-          className='text-2xl font-bold tracking-widest text-primary-200 hover:text-primary-400 transition'
+          className='text-2xl uppercase font-bold tracking-widest text-primary-200 hover:text-primary-400 transition'
         >
           Tafsela
         </Link>

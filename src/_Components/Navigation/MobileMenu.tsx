@@ -1,13 +1,22 @@
 "use client";
+import { MobileMenuProps } from "@/lib/types/headerLinks";
+import { sessionType } from "@/lib/types/session";
 import Link from "next/link";
-import React, { useState } from "react";
+import { useState } from "react";
+import Profile from "../Profile";
 
-interface MobileMenuProps {
-  links: { name: string; href: string }[];
-}
-
-export default function MobileMenu({ links }: MobileMenuProps) {
+export default function MobileMenu({
+  links,
+  isLoggedIn,
+  session,
+}: {
+  links: MobileMenuProps["links"];
+  isLoggedIn?: boolean;
+  session?: sessionType;
+}) {
   const [isOpen, setIsOpen] = useState(false);
+
+  console.log("session", session);
 
   return (
     <>
@@ -53,6 +62,15 @@ export default function MobileMenu({ links }: MobileMenuProps) {
             onClick={(e) => e.stopPropagation()} // prevent closing when clicking inside menu
           >
             <ul className='flex flex-col space-y-4'>
+              {isLoggedIn && (
+                <li>
+                  <Profile
+                    src={session?.user?.image || ""}
+                    alt={session?.user?.name || ""}
+                    className=''
+                  />
+                </li>
+              )}
               {links.map((link) => (
                 <li key={link.href}>
                   <Link
