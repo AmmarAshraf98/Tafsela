@@ -13,7 +13,7 @@ export default async function Home() {
         alt='Welcome to tafsela website'
       />
 
-      <div className='relative z-10 text-center mt-32 sm:mt-0'>
+      <div className='relative z-10 text-center mt-18 sm:mt-0'>
         <h1 className='text-2xl sm:text-4xl md:text-8xl mb-10 tracking-tight font-normal text-primary-200 capitalize'>
           welcome to tafsela.
         </h1>

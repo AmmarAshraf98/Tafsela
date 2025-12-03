@@ -1,9 +1,9 @@
-import { Metadata } from "next";
-import React, { Suspense } from "react";
-import SectionHeader from "../_Components/SectionHeader";
 import Spinner from "@/_Components/Spinner";
-import ItemsList from "../_Components/ItemsList";
 import { handleFilter } from "@/lib/helper/FilterPrice";
+import { Metadata } from "next";
+import { Suspense } from "react";
+import ItemsList from "../_Components/ItemsList";
+import SectionHeader from "../_Components/SectionHeader";
 
 export const metadata: Metadata = {
   title: " Wedding Contract",

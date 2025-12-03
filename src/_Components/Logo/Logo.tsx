@@ -9,8 +9,8 @@ function Logo() {
         src={logo}
         alt='tafsela website'
         className='rounded-full'
-        width={55}
-        height={55}
+        width={48}
+        height={48}
       />
       <span className='text-xl uppercase tracking-wide'>Tafsela</span>
     </Link>

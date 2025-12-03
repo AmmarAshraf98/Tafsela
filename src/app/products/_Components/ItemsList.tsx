@@ -1,7 +1,6 @@
-import React from "react";
 import ProductCard from "@/_Components/ProductCard/ProductCard";
-import { getAllItems, getAllProductForCategory } from "@/services/dataServece";
 import { product } from "@/lib/types/product_i";
+import { getAllItems, getAllProductForCategory } from "@/services/dataServece";
 import ItemCount from "./ItemCount";
 
 export default async function ItemsList({

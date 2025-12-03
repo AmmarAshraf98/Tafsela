@@ -47,6 +47,8 @@ function UpdateForm({ product }: { product: product }) {
   // Wrap the action so it matches React's expected type: (formData) => void | Promise<void>
   const handleAction = async (formData: FormData): Promise<void> => {
     // call updateProductAction but do not return its value to satisfy the expected void return type
+    console.log("formData after update", formData);
+
     await updateProductAction(formData);
   };
 

@@ -4,6 +4,7 @@ import { sessionType } from "@/lib/types/session";
 import Link from "next/link";
 import { useState } from "react";
 import Profile from "../Profile";
+import SignOutButton from "../SignoutButton";
 
 export default function MobileMenu({
   links,
@@ -15,8 +16,6 @@ export default function MobileMenu({
   session?: sessionType;
 }) {
   const [isOpen, setIsOpen] = useState(false);
-
-  console.log("session", session);
 
   return (
     <>
@@ -58,7 +57,7 @@ export default function MobileMenu({
           onClick={() => setIsOpen(false)}
         >
           <div
-            className='absolute top-0 right-0 w-64 h-full bg-neutral-primary p-6 z-40 bg-primary-900/30'
+            className='absolute top-0 right-0 w-64 h-full bg-neutral-primary p-6 z-40 bg-primary-900 flex flex-col justify-between'
             onClick={(e) => e.stopPropagation()} // prevent closing when clicking inside menu
           >
             <ul className='flex flex-col space-y-4'>
@@ -71,6 +70,7 @@ export default function MobileMenu({
                   />
                 </li>
               )}
+
               {links.map((link) => (
                 <li key={link.href}>
                   <Link
@@ -83,6 +83,8 @@ export default function MobileMenu({
                 </li>
               ))}
             </ul>
+
+            {session?.user && <SignOutButton />}
           </div>
         </div>
       )}
