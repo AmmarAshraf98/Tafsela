@@ -19,36 +19,43 @@ export default function MobileMenu({
 
   return (
     <>
-      {/* Burger Button */}
-      <button
-        type='button'
-        className='md:hidden p-2 w-10 h-10 cursor-pointer flex items-center justify-center rounded-md hover:bg-neutral-secondary-soft z-50'
-        aria-expanded={isOpen}
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        <span className='sr-only'>Open main menu</span>
-        <svg
-          className='w-6 h-6 cursor-pointer'
-          xmlns='http://www.w3.org/2000/svg'
-          fill='none'
-          viewBox='0 0 24 24'
-          stroke='currentColor'
+      <div className='flex items-center gap-3'>
+        {/* Burger Button */}
+        <button
+          type='button'
+          className='md:hidden p-2 w-10 h-10 cursor-pointer flex items-center justify-center rounded-md hover:bg-neutral-secondary-soft z-50'
+          aria-expanded={isOpen}
+          onClick={() => setIsOpen(!isOpen)}
         >
-          {isOpen ? (
-            <path
-              strokeLinecap='round'
-              strokeWidth={2}
-              d='M6 18L18 6M6 6l12 12'
-            />
-          ) : (
-            <path
-              strokeLinecap='round'
-              strokeWidth={2}
-              d='M4 6h16M4 12h16M4 18h16'
-            />
-          )}
-        </svg>
-      </button>
+          <span className='sr-only'>Open main menu</span>
+          <svg
+            className='w-6 h-6 cursor-pointer'
+            xmlns='http://www.w3.org/2000/svg'
+            fill='none'
+            viewBox='0 0 24 24'
+            stroke='currentColor'
+          >
+            {isOpen ? (
+              <path
+                strokeLinecap='round'
+                strokeWidth={2}
+                d='M6 18L18 6M6 6l12 12'
+              />
+            ) : (
+              <path
+                strokeLinecap='round'
+                strokeWidth={2}
+                d='M4 6h16M4 12h16M4 18h16'
+              />
+            )}
+          </svg>
+        </button>
+
+        {/* signout button */}
+        <span className='hidden md:block'>
+          {isLoggedIn && <SignOutButton />}
+        </span>
+      </div>
 
       {/* Overlay Menu */}
       {isOpen && (
@@ -75,7 +82,7 @@ export default function MobileMenu({
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className='text-heading text-lg hover:text-fg-brand'
+                    className='text-heading text-lg hover:text-fg-brand block'
                     onClick={() => setIsOpen(false)}
                   >
                     {link.name}
@@ -84,7 +91,12 @@ export default function MobileMenu({
               ))}
             </ul>
 
-            {session?.user && <SignOutButton />}
+            {session?.user && (
+              <div className='flex items-center gap-2 border border-primary-900 py-3 border-t-primary-400'>
+                <span className='md:hidden'>Logout</span>
+                <SignOutButton />
+              </div>
+            )}
           </div>
         </div>
       )}

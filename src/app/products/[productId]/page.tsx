@@ -16,7 +16,7 @@ export async function generateMetadata({
 }: {
   params: { productId: string };
 }): Promise<Metadata> {
-  const id = params.productId;
+  const id = await params.productId;
   return { title: `product ${id}` };
 }
 
@@ -108,7 +108,7 @@ export default async function Page({
               <MdOutlinePhoneInTalk className='size-3.5 sm:size-4 md:size-5  text-primary-600' />
               :
               <a
-                href='https://wa.me/201015947685'
+                href='https://wa.me/201014851383'
                 target='_blank'
                 // for security reasons when using target blank
                 rel='noopener noreferrer'

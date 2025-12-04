@@ -35,7 +35,7 @@ function Footer() {
           </a>
 
           <a
-            href='https://wa.me/201015947685'
+            href='https://wa.me/201014851383'
             target='_blank'
             className='hover:text-primary-500 transition-colors'
           >

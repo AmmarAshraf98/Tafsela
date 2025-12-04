@@ -47,7 +47,6 @@ function UpdateForm({ product }: { product: product }) {
   // Wrap the action so it matches React's expected type: (formData) => void | Promise<void>
   const handleAction = async (formData: FormData): Promise<void> => {
     // call updateProductAction but do not return its value to satisfy the expected void return type
-    console.log("formData after update", formData);
 
     await updateProductAction(formData);
   };
@@ -143,7 +142,7 @@ function UpdateForm({ product }: { product: product }) {
 
           {/*  Main Image*/}
           <div className='w-full'>
-            <div className='flex items-center justify-between'>
+            <div className='flex items-center justify-between mb-0.5'>
               <label
                 htmlFor='Image'
                 className='block mb-2 text-sm font-medium text-primary-600 dark:text-primary-300'
@@ -151,7 +150,7 @@ function UpdateForm({ product }: { product: product }) {
                 Image
               </label>
               <button
-                className='w-8 bg-primary-700 cursor-pointer rounded-md hover:bg-primary-400 transition-all duration-200'
+                className='w-6 bg-primary-700 cursor-pointer rounded-md hover:bg-primary-400 transition-all duration-200'
                 onClick={handleAddInput}
               >
                 +
@@ -171,7 +170,7 @@ function UpdateForm({ product }: { product: product }) {
           {/* secon image  */}
           {[...Array(imgInput)].map((_, index) => (
             <div key={index}>
-              <div className='flex items-center justify-between'>
+              <div className='flex items-center justify-between mb-0.5'>
                 <label
                   htmlFor={`img_${index + 1}`}
                   className='block mb-2 text-sm font-medium text-primary-600 dark:text-primary-300'
@@ -180,7 +179,7 @@ function UpdateForm({ product }: { product: product }) {
                 </label>
                 {index >= 1 && (
                   <button
-                    className='w-8 bg-primary-700 cursor-pointer rounded-md hover:bg-primary-400 transition-all duration-200'
+                    className='w-6 bg-primary-700 cursor-pointer rounded-md hover:bg-primary-400 transition-all duration-200'
                     onClick={handleRemoveInput}
                   >
                     -

@@ -1,11 +1,11 @@
+import { auth } from "@/lib/auth";
+import { checkAdmin } from "@/lib/helper/checkISAdmin";
+import { MobileMenuProps } from "@/lib/types/headerLinks";
+import { sessionType } from "@/lib/types/session";
 import Link from "next/link";
 import Logo from "../Logo/Logo";
 import MobileMenu from "../Navigation/MobileMenu";
-import { auth } from "@/lib/auth";
-import { checkAdmin } from "@/lib/helper/checkISAdmin";
 import Profile from "../Profile";
-import { MobileMenuProps } from "@/lib/types/headerLinks";
-import { sessionType } from "@/lib/types/session";
 
 export default async function Header() {
   const links: MobileMenuProps["links"] = [
@@ -85,12 +85,22 @@ export default async function Header() {
 
         {/*LoggedIn Mobile Menu */}
         {isLoggedIn && !isAdmin && (
-          <MobileMenu links={loggedInLinks} session={session} />
+          <MobileMenu
+            links={loggedInLinks}
+            isLoggedIn={isLoggedIn}
+            session={session}
+          />
         )}
+
         {/* Basic Mobile Menu */}
         {!isLoggedIn && (
-          <MobileMenu links={links} session={session ?? undefined} />
+          <MobileMenu
+            links={links}
+            isLoggedIn={isLoggedIn}
+            session={session ?? undefined}
+          />
         )}
+
         {/* Admin Mobile Menu */}
         {isAdmin && (
           <MobileMenu

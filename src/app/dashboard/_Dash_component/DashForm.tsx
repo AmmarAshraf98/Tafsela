@@ -105,20 +105,22 @@ function DashForm() {
 
           {/*  Main Image*/}
           <div className='w-full'>
-            <div className='flex items-center justify-between'>
+            <div className='flex items-center justify-between mb-0.5'>
               <label
                 htmlFor='Image'
                 className='block mb-2 text-sm font-medium text-primary-600 dark:text-primary-300'
               >
                 Image
               </label>
+
               <button
-                className='w-8 bg-primary-700 cursor-pointer rounded-md hover:bg-primary-400 transition-all duration-200'
+                className='w-6 bg-primary-700 cursor-pointer rounded-md hover:bg-primary-400 transition-all duration-200'
                 onClick={handleAddInput}
               >
                 +
               </button>
             </div>
+
             <input
               type='text'
               name='main_img'
@@ -132,7 +134,7 @@ function DashForm() {
           {/* secon image  */}
           {[...Array(imgInput)].map((_, index) => (
             <div key={index}>
-              <div className='flex items-center justify-between'>
+              <div className='flex items-center justify-between mb-0.5'>
                 <label
                   htmlFor={`img_${index + 1}`}
                   className='block mb-2 text-sm font-medium text-primary-600 dark:text-primary-300'
@@ -141,13 +143,14 @@ function DashForm() {
                 </label>
                 {index >= 1 && (
                   <button
-                    className='w-8 bg-primary-700 cursor-pointer rounded-md hover:bg-primary-400 transition-all duration-200'
+                    className='w-6 bg-primary-700 cursor-pointer rounded-md hover:bg-primary-400 transition-all duration-200'
                     onClick={handleRemoveInput}
                   >
                     -
                   </button>
                 )}
               </div>
+
               <input
                 type='text'
                 name={`img_${index + 1}`}
