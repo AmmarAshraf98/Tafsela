@@ -5,7 +5,6 @@ import { sessionType } from "@/lib/types/session";
 import Link from "next/link";
 import Logo from "../Logo/Logo";
 import MobileMenu from "../Navigation/MobileMenu";
-import Profile from "../Profile";
 
 export default async function Header() {
   const links: MobileMenuProps["links"] = [
@@ -77,13 +76,13 @@ export default async function Header() {
           </ul>
 
           {/* User Profile */}
-          {isLoggedIn && session?.user?.image && (
+          {/* {isLoggedIn && session?.user?.image && (
             <Profile
               src={session?.user?.image || ""}
               alt={session?.user?.name || ""}
               className='hidden md:block'
             />
-          )}
+          )} */}
         </div>
 
         {/*LoggedIn Mobile Menu */}

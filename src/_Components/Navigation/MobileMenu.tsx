@@ -19,7 +19,7 @@ export default function MobileMenu({
 
   return (
     <>
-      <div className='flex items-center gap-3'>
+      <div className='md:hidden flex items-center gap-3'>
         {/* Burger Button */}
         <button
           type='button'
@@ -52,9 +52,19 @@ export default function MobileMenu({
         </button>
 
         {/* signout button */}
-        <span className='hidden md:block'>
-          {isLoggedIn && <SignOutButton text='Sign out' />}
-        </span>
+        {isLoggedIn && (
+          <span className=' md:block'>
+            <SignOutButton text='' />
+          </span>
+        )}
+
+        {isLoggedIn && session?.user?.image && (
+          <Profile
+            src={session?.user?.image || ""}
+            alt={session?.user?.name || ""}
+            className='size-6 rounded-full'
+          />
+        )}
       </div>
 
       {/* Overlay Menu */}

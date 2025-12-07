@@ -8,7 +8,7 @@ function Profile({
   className: string;
 }) {
   return (
-    <div>
+    <div className='relative group'>
       <img
         src={src}
         alt={alt}

@@ -95,3 +95,21 @@ export const getOffersProducts = async (): Promise<product[]> => {
 
   return data ?? [];
 };
+
+// get best-seller product
+export const getBestSellerProducts = async (): Promise<product[]> => {
+  const { error, data } = (await supabase
+    .from("items")
+    .select("*")
+    .eq("best_seller", true)) as {
+    data: product[];
+    error: supaBaseError | null;
+  };
+
+  if (error) {
+    console.log("Error fetching best-seller items:", error.message);
+    throw new Error("Failed to fetch best-seller items");
+  }
+
+  return data ?? [];
+};
