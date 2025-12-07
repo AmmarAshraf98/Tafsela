@@ -15,16 +15,36 @@ export const middleware = auth;
 */
 
 // the same way with nextAuth just add a little logic inside the auth method
-import { auth } from "./lib/auth";
+// import { auth } from "./lib/auth";
+// export default auth((req) => {
+//   const isLoggedIn = !!req.auth?.user;
+
+//   const isTryingToAccessDashboard =
+//     req.nextUrl.pathname.startsWith("/dashboard");
+
+//   if (!isLoggedIn && isTryingToAccessDashboard) {
+//     return Response.redirect(new URL("/login", req.url));
+//   }
+
+// });
+
+// export const config = {
+//   matcher: ["/dashboard/:path*"],
+// };
+
+// export default auth;
+
+import { auth } from "@/lib/auth";
+import { NextResponse } from "next/server";
+
 export default auth((req) => {
   const isLoggedIn = !!req.auth?.user;
 
-  const isTryingToAccessDashboard =
-    req.nextUrl.pathname.startsWith("/dashboard");
-
-  if (!isLoggedIn && isTryingToAccessDashboard) {
-    return Response.redirect(new URL("/login", req.url));
+  if (!isLoggedIn && req.nextUrl.pathname.startsWith("/dashboard")) {
+    return NextResponse.redirect(new URL("/login", req.url));
   }
+
+  return NextResponse.next();
 });
 
 export const config = {
