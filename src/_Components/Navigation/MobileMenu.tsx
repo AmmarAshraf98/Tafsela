@@ -53,7 +53,7 @@ export default function MobileMenu({
 
         {/* signout button */}
         <span className='hidden md:block'>
-          {isLoggedIn && <SignOutButton />}
+          {isLoggedIn && <SignOutButton text='Sign out' />}
         </span>
       </div>
 
@@ -93,8 +93,8 @@ export default function MobileMenu({
 
             {session?.user && (
               <div className='flex items-center gap-2 border border-primary-900 py-3 border-t-primary-400'>
-                <span className='md:hidden'>Logout</span>
-                <SignOutButton />
+                {/* <span className='md:hidden'>Logout</span> */}
+                <SignOutButton text='Sign out' />
               </div>
             )}
           </div>

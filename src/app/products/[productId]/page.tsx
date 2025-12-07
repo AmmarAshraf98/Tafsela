@@ -1,6 +1,5 @@
 import { getCategoryName } from "@/lib/helper/getCategoryName";
 import { getAllItems, getSpecificProduct } from "@/services/dataServece";
-import { Metadata } from "next";
 import { LuMapPin } from "react-icons/lu";
 import { MdOutlinePhoneInTalk } from "react-icons/md";
 import { TbCategory } from "react-icons/tb";
@@ -15,9 +14,9 @@ export async function generateMetadata({
   params,
 }: {
   params: { productId: string };
-}): Promise<Metadata> {
-  const id = await params.productId;
-  return { title: `product ${id}` };
+}) {
+  const { productId } = await params;
+  return { title: `product ${productId}` };
 }
 
 // generate static params to convert this page from dynamic to static
@@ -29,12 +28,13 @@ export async function generateStaticParams() {
   return ids;
 }
 
+// when page is dynamic | has generate static params no need to use await with the params
 export default async function Page({
   params,
 }: {
   params: { productId: string };
 }) {
-  const productId = params.productId;
+  const { productId } = await params;
 
   const product = await getSpecificProduct(productId);
 
@@ -58,7 +58,8 @@ export default async function Page({
 
   return (
     <div className='max-w-fit md:max-w-4xl xl:max-w-6xl mx-auto mt-8'>
-      <div className='grid relative md:grid-cols-[3fr_4fr] gap-5 md:gap-7 lg:gap-9 border border-primary-800 py-3 px-1.5 md:px-4 mb-24'>
+      {/* border border-primary-800 */}
+      <div className='grid relative md:grid-cols-[3fr_4fr] gap-5 md:gap-7 lg:gap-9  py-3 px-1.5 md:px-4 mb-24'>
         {on_sale && <Badge />}
 
         {/* Swiper */}

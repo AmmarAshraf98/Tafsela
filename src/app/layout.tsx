@@ -31,11 +31,11 @@ export default async function RootLayout({
       <body
         className={`${robot.className} antialiased bg-primary-900 text-primary-100 flex flex-col min-h-screen divide-y divide-primary-50/20`}
       >
-        {/* <Header session={session} /> */}
         <Header />
         <div className='flex-1 md:px-8 px-3 py-12'>
           <main className=' max-w-7xl mx-auto w-full'>{children}</main>
         </div>
+
         <Footer />
       </body>
     </html>

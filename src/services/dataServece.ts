@@ -77,3 +77,21 @@ export const getAllProductForCategory = async (
 
   return data || [];
 };
+
+// get product with offers
+export const getOffersProducts = async (): Promise<product[]> => {
+  const { error, data } = (await supabase
+    .from("items")
+    .select("*")
+    .eq("on_sale", true)) as {
+    data: product[] | null;
+    error: supaBaseError | null;
+  };
+
+  if (error) {
+    console.error("Error fetching sale items:", error.message);
+    throw new Error("Failed to fetch sale items");
+  }
+
+  return data ?? [];
+};

@@ -10,6 +10,7 @@ import Profile from "../Profile";
 export default async function Header() {
   const links: MobileMenuProps["links"] = [
     { name: "Best-seller", href: "/best-seller" },
+    { name: "Offers", href: "/offers" },
     { name: "products", href: "/products" },
     { name: "About", href: "/about" },
     { name: "Login", href: "/login" },
@@ -17,12 +18,14 @@ export default async function Header() {
 
   const loggedInLinks: MobileMenuProps["links"] = [
     { name: "Best-seller", href: "/best-seller" },
+    { name: "Offers", href: "/offers" },
     { name: "products", href: "/products" },
     { name: "About", href: "/about" },
   ];
 
   const addminLinks: MobileMenuProps["links"] = [
     { name: "Best-seller", href: "/best-seller" },
+    { name: "Offers", href: "/offers" },
     { name: "products", href: "/products" },
     { name: "About", href: "/about" },
     { name: "Dashboard", href: "/dashboard" },

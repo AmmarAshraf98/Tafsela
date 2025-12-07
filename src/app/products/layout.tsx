@@ -11,7 +11,6 @@ function layout({ children }: { children: Readonly<React.ReactNode> }) {
 
         <div className='py-1'>{children}</div>
       </div>
-      
     </section>
   );
 }

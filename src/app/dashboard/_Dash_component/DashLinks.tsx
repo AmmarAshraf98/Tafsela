@@ -32,7 +32,7 @@ function DashLinks() {
       {links.map((ele, index) => (
         <DashLink dashLink={ele} key={index} />
       ))}
-      <SignOutButton />
+      <SignOutButton text='Sign out' />
     </ul>
   );
 }
