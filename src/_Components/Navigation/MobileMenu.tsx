@@ -19,53 +19,36 @@ export default function MobileMenu({
 
   return (
     <>
-      <div className='md:hidden flex items-center gap-3'>
-        {/* Burger Button */}
-        <button
-          type='button'
-          className='md:hidden p-2 w-10 h-10 cursor-pointer flex items-center justify-center rounded-md hover:bg-neutral-secondary-soft z-50'
-          aria-expanded={isOpen}
-          onClick={() => setIsOpen(!isOpen)}
+      {/* Burger Button */}
+      <button
+        type='button'
+        className='md:hidden p-2 w-10 h-10 cursor-pointer flex items-center justify-center rounded-md hover:bg-neutral-secondary-soft z-50'
+        aria-expanded={isOpen}
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <span className='sr-only'>Open main menu</span>
+        <svg
+          className='w-6 h-6 cursor-pointer'
+          xmlns='http://www.w3.org/2000/svg'
+          fill='none'
+          viewBox='0 0 24 24'
+          stroke='currentColor'
         >
-          <span className='sr-only'>Open main menu</span>
-          <svg
-            className='w-6 h-6 cursor-pointer'
-            xmlns='http://www.w3.org/2000/svg'
-            fill='none'
-            viewBox='0 0 24 24'
-            stroke='currentColor'
-          >
-            {isOpen ? (
-              <path
-                strokeLinecap='round'
-                strokeWidth={2}
-                d='M6 18L18 6M6 6l12 12'
-              />
-            ) : (
-              <path
-                strokeLinecap='round'
-                strokeWidth={2}
-                d='M4 6h16M4 12h16M4 18h16'
-              />
-            )}
-          </svg>
-        </button>
-
-        {/* signout button */}
-        {isLoggedIn && (
-          <span className=' md:block'>
-            <SignOutButton text='' />
-          </span>
-        )}
-
-        {isLoggedIn && session?.user?.image && (
-          <Profile
-            src={session?.user?.image || ""}
-            alt={session?.user?.name || ""}
-            className='size-6 rounded-full'
-          />
-        )}
-      </div>
+          {isOpen ? (
+            <path
+              strokeLinecap='round'
+              strokeWidth={2}
+              d='M6 18L18 6M6 6l12 12'
+            />
+          ) : (
+            <path
+              strokeLinecap='round'
+              strokeWidth={2}
+              d='M4 6h16M4 12h16M4 18h16'
+            />
+          )}
+        </svg>
+      </button>
 
       {/* Overlay Menu */}
       {isOpen && (

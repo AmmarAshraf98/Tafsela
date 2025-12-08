@@ -8,7 +8,7 @@ import { checkAdmin } from "./helper/checkISAdmin";
 // Action to handle user sign-in with Google
 export async function signInAction() {
   await signIn("google", {
-    redirectTo: "/dashboard",
+    redirectTo: "/products",
   });
 }
 

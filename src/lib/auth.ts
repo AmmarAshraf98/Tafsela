@@ -3,11 +3,6 @@ import NextAuth, { type NextAuthConfig } from "next-auth";
 
 import Google from "next-auth/providers/google";
 
-// interface AuthorizedCallbackParams {
-//   auth: Session | null;
-//   request: Request;
-// }
-
 const authConfig: NextAuthConfig = {
   providers: [
     Google({
@@ -15,23 +10,6 @@ const authConfig: NextAuthConfig = {
       clientSecret: process.env.AUTH_GOOGLE_SECRET!,
     }),
   ],
-
-  callbacks: {
-    /*
-    auth => is the current session ( user data )
-    request => request information
-    */
-    // authorized({ auth, request }: AuthorizedCallbackParams) {
-    //   const allowedEmails = [
-    //     "ammarashraf230@gmail.com",
-    //     "tafsela0@gmail.com",
-    //     "Esesraa908@gmail.com",
-    //   ];
-    //   console.log("current session ============================");
-    //   console.log(auth?.user);
-    //   return allowedEmails.includes(auth?.user?.email || "");
-    // },
-  },
 
   pages: {
     signIn: "/login",
@@ -44,3 +22,23 @@ export const {
   signOut,
   handlers: { GET, POST },
 } = NextAuth(authConfig);
+
+/*
+===============================================================================
+  callbacks: {
+    
+    auth => is the current session ( user data )
+    request => request information
+    
+    // authorized({ auth, request }: AuthorizedCallbackParams) {
+    //   const allowedEmails = [
+    //     "ammarashraf230@gmail.com",
+    //     "tafsela0@gmail.com",
+    //     "Esesraa908@gmail.com",
+    //   ];
+    //   console.log("current session ============================");
+    //   console.log(auth?.user);
+    //   return allowedEmails.includes(auth?.user?.email || "");
+    // },
+  
+*/

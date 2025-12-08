@@ -1,13 +1,7 @@
-import { auth } from "@/lib/auth";
-import React from "react";
+import DashboardUser from "./_Dash_component/DashboardUser";
 
 async function page() {
-  const session = await auth();
-  return (
-    <div>
-      <h2>Welcome, {session?.user?.name}</h2>
-    </div>
-  );
+  return <DashboardUser />;
 }
 
 export default page;

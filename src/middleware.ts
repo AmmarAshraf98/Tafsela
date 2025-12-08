@@ -36,12 +36,13 @@ export const middleware = auth;
 
 import { auth } from "@/lib/auth";
 import { NextResponse } from "next/server";
+import { checkAdmin } from "./lib/helper/checkISAdmin";
 
 export default auth((req) => {
-  const isLoggedIn = !!req.auth?.user;
+  const isAdmin = checkAdmin(req.auth?.user?.email || "");
 
-  if (!isLoggedIn && req.nextUrl.pathname.startsWith("/dashboard")) {
-    return NextResponse.redirect(new URL("/login", req.url));
+  if (!isAdmin && req.nextUrl.pathname.startsWith("/dashboard")) {
+    return NextResponse.redirect(new URL("/products", req.url));
   }
 
   return NextResponse.next();

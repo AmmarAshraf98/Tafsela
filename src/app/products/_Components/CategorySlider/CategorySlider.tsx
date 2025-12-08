@@ -1,10 +1,9 @@
-import React from "react";
-import styles from "./category.module.css";
 import { SideNavigationLinks } from "@/lib/types/sideNAvigationKinks";
+import { FaHandHoldingHeart } from "react-icons/fa6";
 import { GiAmpleDress, GiDiamondRing, GiHandheldFan } from "react-icons/gi";
 import { ImMagicWand } from "react-icons/im";
 import { MdStorefront } from "react-icons/md";
-import { FaHandHoldingHeart } from "react-icons/fa6";
+import styles from "./category.module.css";
 import CategoryItem from "./CategoryItem";
 
 const links: SideNavigationLinks[] = [
