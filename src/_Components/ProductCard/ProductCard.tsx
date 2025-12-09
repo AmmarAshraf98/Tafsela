@@ -10,7 +10,7 @@ function ProductCard({ product }: { product: product }) {
   const res = convertDriveLink(main_img);
 
   return (
-    <div className='border-primary-800 bg-primary-500 border relative text-primary-900'>
+    <div className='border-primary-800 bg-primary-500 border relative text-primary-900 group'>
       {/* MAIN_Image */}
       <div className='relative h-[300px]'>
         <Image
@@ -23,7 +23,7 @@ function ProductCard({ product }: { product: product }) {
         <a
           href='https://wa.me/201014851383'
           target='_blank'
-          className='hover:bg-primary-500 transition-all duration-300 absolute start-4 end-4 bottom-3 bg-primary-500/80 text-center py-2 capitalize'
+          className='hover:bg-primary-500 transition-all duration-300 absolute start-4 end-4 bottom-3 bg-primary-500/80 text-center py-2 capitalize opacity-0 group-hover:opacity-100'
         >
           order now
         </a>
