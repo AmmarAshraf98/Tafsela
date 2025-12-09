@@ -19,7 +19,7 @@ export async function generateMetadata({
   return { title: `product ${productId}` };
 }
 
-// generate static params to convert this page from dynamic to static
+// generate static params to convert this page from dynamic to static (SSG)
 export async function generateStaticParams() {
   const products = await getAllItems();
 

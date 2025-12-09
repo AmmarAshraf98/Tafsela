@@ -37,6 +37,13 @@ function SelectPrice() {
 
       <SelectContent className='bg-primary-800 text-primary-200 border border-primary-900'>
         <SelectItem
+          value='all'
+          className='data-[highlighted]:bg-primary-700 data-[highlighted]:text-white data-[state=checked]:bg-primary-600 data-[state=checked]:text-primary-300 transition-colors duration-200'
+        >
+          All
+        </SelectItem>
+
+        <SelectItem
           value='low'
           className='data-[highlighted]:bg-primary-700 data-[highlighted]:text-primary-200 data-[state=checked]:bg-primary-600 data-[state=checked]:text-primary-500 transition-colors duration-200 mb-0.5'
         >
