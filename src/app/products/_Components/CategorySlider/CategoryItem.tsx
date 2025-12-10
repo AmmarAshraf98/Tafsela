@@ -2,7 +2,6 @@
 import { SideNavigationLinks } from "@/lib/types/sideNAvigationKinks";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React from "react";
 
 function CategoryItem({ category }: { category: SideNavigationLinks }) {
   const pathName = usePathname();

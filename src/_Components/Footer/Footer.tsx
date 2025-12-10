@@ -1,6 +1,5 @@
-import React from "react";
-import { FaFacebookF, FaInstagram, FaWhatsapp } from "react-icons/fa";
 import Link from "next/link";
+import { FaFacebookF, FaInstagram, FaWhatsapp } from "react-icons/fa";
 
 function Footer() {
   const year = new Date().getFullYear();
