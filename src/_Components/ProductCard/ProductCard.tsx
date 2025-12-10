@@ -4,7 +4,13 @@ import { product } from "@/lib/types/product_i";
 import Image from "next/image";
 import Link from "next/link";
 
-function ProductCard({ product }: { product: product }) {
+function ProductCard({
+  product,
+  priority,
+}: {
+  product: product;
+  priority: boolean;
+}) {
   const { id, name, description, price, on_sale, main_img, priceAfterSale } =
     product;
   const res = convertDriveLink(main_img);
@@ -16,13 +22,18 @@ function ProductCard({ product }: { product: product }) {
         <Image
           src={res}
           fill
-          alt={`Cabin ${name}`}
+          alt={`Tafsela luxury product ${name} – high-end jewelry and accessories`}
           className=' object-cover object-top'
+          quality={75}
+          placeholder='blur'
+          priority={priority}
+          sizes='(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw'
         />
 
         <a
           href='https://wa.me/201014851383'
           target='_blank'
+          rel='noopener noreferrer'
           className='hover:bg-primary-500 transition-all duration-300 absolute start-4 end-4 bottom-3 bg-primary-500/80 text-center py-2 capitalize opacity-0 group-hover:opacity-100'
         >
           order now
