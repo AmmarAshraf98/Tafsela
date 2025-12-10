@@ -6,10 +6,10 @@ import Link from "next/link";
 
 function ProductCard({
   product,
-  priority,
+  priority = false,
 }: {
   product: product;
-  priority: boolean;
+  priority?: boolean;
 }) {
   const { id, name, description, price, on_sale, main_img, priceAfterSale } =
     product;
@@ -18,7 +18,7 @@ function ProductCard({
   return (
     <div className='border-primary-800 bg-primary-500 border relative text-primary-900 group'>
       {/* MAIN_Image */}
-      <div className='relative h-[300px]'>
+      <div className='relative aspect-[1/1] w-full overflow-hidden'>
         <Image
           src={res}
           fill

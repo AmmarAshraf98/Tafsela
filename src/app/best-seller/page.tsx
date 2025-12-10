@@ -1,8 +1,8 @@
 import ProductCard from "@/_Components/ProductCard/ProductCard";
-import { getBestSellerProducts } from "@/services/dataServece";
-import SectionHeader from "../products/_Components/SectionHeader";
-import { Suspense } from "react";
 import Spinner from "@/_Components/Spinner";
+import { getBestSellerProducts } from "@/services/dataServece";
+import { Suspense } from "react";
+import SectionHeader from "../products/_Components/SectionHeader";
 
 function page() {
   return (
