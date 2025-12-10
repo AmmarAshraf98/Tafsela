@@ -11,7 +11,8 @@ export default async function Home() {
         placeholder='blur'
         priority
         className='object-cover'
-        alt='Welcome to tafsela website'
+        alt='Welcome to Tafsela – Discover luxury jewelry and accessories'
+        quality={80}
       />
 
       <div className='relative z-10 text-center mt-18 sm:mt-0'>
