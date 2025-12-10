@@ -31,8 +31,12 @@ const BestSeller = async () => {
   return (
     <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 xl:gap-8'>
       {data?.length &&
-        data.map((product) => (
-          <ProductCard product={product} key={product.id} />
+        data.map((product, index) => (
+          <ProductCard
+            product={product}
+            key={product.id}
+            priority={index < 3}
+          />
         ))}
     </div>
   );
