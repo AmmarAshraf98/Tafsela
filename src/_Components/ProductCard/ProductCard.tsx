@@ -23,9 +23,8 @@ function ProductCard({
           src={res}
           fill
           alt={`Tafsela luxury product ${name} – high-end jewelry and accessories`}
-          className=' object-cover object-top'
+          className='object-cover object-top'
           quality={75}
-          placeholder='blur'
           priority={priority}
           sizes='(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw'
         />
