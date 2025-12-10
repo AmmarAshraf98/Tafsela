@@ -1,5 +1,5 @@
 import Image from "next/image";
-import landing from "../../public/landing/landing.png";
+import landing from "../../public/landing/landingCom.webp";
 import Link from "next/link";
 
 export default async function Home() {
@@ -9,6 +9,7 @@ export default async function Home() {
         src={landing}
         fill
         placeholder='blur'
+        priority
         className='object-cover'
         alt='Welcome to tafsela website'
       />
