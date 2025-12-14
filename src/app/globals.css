@@ -16,26 +16,37 @@
   --color-primary-900: #2d1e11;
 }
 
+@layer components {
+  .spinner {
+    margin: 3.2rem auto 1.6rem;
+    width: 60px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 8px solid theme("colors.primary.900");
+    border-right-color: theme("colors.primary.200");
+    animation: rotate 1s infinite linear;
+  }
+
+  .spinner-mini {
+    margin: 0;
+    width: 20px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 2px solid theme("colors.primary.200");
+    border-right-color: transparent;
+    animation: rotate 1s infinite linear;
+  }
+
+  @keyframes rotate {
+    to {
+      transform: rotate(1turn);
+    }
+  }
+}
+
 ::selection {
   background-color: var(--color-primary-700);
 }
-
-/* dark mode */
-/*
-
- 50:  "#f4f4f5",
-          100: "#e4e4e7",
-          200: "#a1a1aa",
-          300: "#71717a",
-          400: "#52525b",
-          500: "#3f3f46", // base dark gray
-          600: "#27272a",
-          700: "#1e1e20",
-          800: "#141416",
-          900: "#0a0a0b",
-
-
-
 
 /* SCroll-bar style */
 .custom-scroll::-webkit-scrollbar {
@@ -221,6 +232,7 @@
   color: #fff;
   color: #2d1e11;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -236,7 +248,7 @@
   padding: 0 4px;
   right: -2px;
   top: -2px;
-  z-index: 99999;
+  z-index: 9;
   text-align: center;
   width: fit-content;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -330,4 +342,75 @@
 
 .inspired:hover {
   color: rgba(255, 255, 255, 0.8);
+}
+
+/* swiper */
+/* Custom styles for placing pagination below the slide */
+
+/* The main Swiper container is now the reference point. */
+.swiper-pagination-under-slide {
+  /* This is crucial: By default, Swiper's pagination is ABSOLUTE. 
+     Setting padding here will create space *under* the slide area 
+     for the pagination container to occupy. 
+     Adjust 45px based on your bullet size (28px) plus desired spacing. */
+  padding-bottom: 60px !important;
+}
+
+/* Target the actual pagination container */
+.swiper-pagination-under-slide .swiper-pagination {
+  /* Swiper's default bottom position is 10px, so we set it to 0 
+     to place it exactly at the bottom edge of the new padding. */
+  bottom: 10px !important;
+  top: auto !important; /* Ensure it is not stuck to the top */
+
+  /* Reset left/right to center it */
+  left: 0 !important;
+  right: 0 !important;
+  width: 100%;
+
+  /* Ensure the dots/images are always centered */
+  display: flex;
+  justify-content: center;
+}
+
+.swiper-pagination-bullet {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px !important;
+  margin: 0 3px;
+  overflow: hidden;
+  border: 2px solid #2d1e11;
+  transition: all 0.3s ease;
+  background-color: #fff;
+  opacity: 0.5 !important;
+  width: 40px !important;
+  height: 40px !important;
+}
+
+.swiper-pagination-bullet.active {
+  border: 2px solid #fff;
+  transform: scale(1.15);
+  opacity: 1 !important;
+}
+
+.swiper-bullet-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .swiper-pagination-bullet {
+    width: 30px !important;
+    height: 30px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .swiper-pagination-bullet {
+    width: 25px !important;
+    height: 25px !important;
+  }
 }

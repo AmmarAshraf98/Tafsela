@@ -8,7 +8,7 @@ import ProductDescription from "../_Components/ProductDesc";
 import SalePrice from "../_Components/SalePrice";
 import SwipComp from "../_Components/Swiper";
 
-export const revalidate = 3600;
+// export const revalidate = 3600;
 
 export async function generateMetadata({
   params,
@@ -59,7 +59,7 @@ export default async function Page({
   return (
     <div className='max-w-fit md:max-w-4xl xl:max-w-6xl mx-auto mt-8'>
       {/* border border-primary-800 */}
-      <div className='grid relative md:grid-cols-[3fr_4fr] gap-5 md:gap-7 lg:gap-9  py-3 px-1.5 md:px-4 mb-24'>
+      <div className='grid relative md:grid-cols-[3fr_4fr] gap-5 md:gap-7 lg:gap-9  py-6 px-1.5 md:px-4 mb-24'>
         {on_sale && <Badge />}
 
         {/* Swiper */}

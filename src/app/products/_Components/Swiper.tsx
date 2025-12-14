@@ -14,42 +14,36 @@ function SwipComp({ images, scrAlt }: { images: string[]; scrAlt: string }) {
       modules={[Pagination]}
       autoplay={{ delay: 2500, disableOnInteraction: true }}
       spaceBetween={10}
-      //   Handle Dotts Style
       pagination={{
         clickable: true,
-        renderBullet: function (index, className) {
+        renderBullet: (index, className) => {
+          const originalUrl = convertDriveLink(images[index]);
+          const proxyUrl = `/_next/image?url=${encodeURIComponent(
+            originalUrl
+          )}&w=64&q=75`;
+          const altText = `${scrAlt} - Thumbnail ${index + 1}`;
+
           return `
-            <span class="${className}" 
-              style="
-                width: 10px;
-                height: 10px;
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-                border-radius: 50%;
-                margin: 0 4px;
-                overflow: hidden;
-                border: 2px solid #2d1e11;
-                transition: all 0.3s ease;
-                background-color: #fff;
-              ">
+            <span class="${className} swiper-pagination-bullet">
+              <img 
+                src="${proxyUrl}" 
+                alt="${altText}" 
+                class="swiper-bullet-image"
+              />
             </span>`;
         },
       }}
-      //   add style while click on dotts
       onPaginationUpdate={(swiper) => {
         swiper.pagination.bullets.forEach((bullet) => {
           const el = bullet as HTMLElement;
           if (el.classList.contains("swiper-pagination-bullet-active")) {
-            el.style.border = "2px solid #fff";
-            el.style.transform = "scale(1.15)";
+            el.classList.add("active");
           } else {
-            el.style.border = "2px solid #2d1e11";
-            el.style.transform = "scale(1)";
+            el.classList.remove("active");
           }
         });
       }}
-      className='shadow-lg'
+      className='swiper-pagination-under-slide'
     >
       {images.map((img, index) => (
         <SwiperSlide key={index} className='relative w-full aspect-square'>
@@ -58,6 +52,8 @@ function SwipComp({ images, scrAlt }: { images: string[]; scrAlt: string }) {
             fill
             alt={`${scrAlt}-${index}`}
             className='object-cover'
+            sizes='(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw'
+            priority
           />
         </SwiperSlide>
       ))}

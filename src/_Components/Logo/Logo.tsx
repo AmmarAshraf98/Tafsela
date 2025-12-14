@@ -13,7 +13,7 @@ function Logo() {
         height={45}
         priority
         placeholder='blur'
-        quality={100}
+        quality={75}
       />
       <span className='text-xl uppercase tracking-wide'>Tafsela</span>
     </Link>
