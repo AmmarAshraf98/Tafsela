@@ -12,13 +12,13 @@ export default function SalePrice({
       <div className='flex items-center gap-3 text-lg'>
         {on_sale && priceAfterSale ? (
           <>
-            <span className='line-through text-primary-500'>{price} EGP</span>
+            <span className='line-through text-primary-500'>E£ {price} </span>
             <span className='text-primary-200 font-bold'>
-              {priceAfterSale} EGP
+              E£ {priceAfterSale}
             </span>
           </>
         ) : (
-          <span className='text-primary-200 font-bold'>{price} EGP</span>
+          <span className='text-primary-200 font-bold'>E£ {price}</span>
         )}
       </div>
     </div>

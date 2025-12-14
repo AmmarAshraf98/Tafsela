@@ -56,10 +56,9 @@ function ProductCard({
           {on_sale ? (
             <>
               <span className='font-bold'>
-                E£ {priceAfterSale}
+                E£{priceAfterSale}
                 <span className='line-through font-semibold px-1'>
-                  {" "}
-                  {price}
+                  E£{price}
                 </span>
               </span>
             </>

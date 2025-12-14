@@ -6,7 +6,7 @@ function ProductDescription({ description }: { description: string }) {
   const [showFull, setShowFull] = useState(false);
 
   return (
-    <p className='text-md sm:text-lg text-primary-300 mb-2 md:mb-4 lg:mb-5'>
+    <p className='text-md sm:text-lg text-primary-300 mb-3.5 md:mb-4 lg:mb-5'>
       {maxLength(description, 0, 16, showFull)}
       {description.split(" ").length > 8 && (
         <button

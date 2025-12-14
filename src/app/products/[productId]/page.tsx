@@ -89,8 +89,7 @@ export default async function Page({
           {/*  information list */}
           <ul className='flex flex-col gap-1'>
             <li className='flex gap-2 items-center'>
-              <TbCategory className='size-3.5 sm:size-4 md:size-5  text-primary-600' />
-              :
+              <TbCategory className='size-5  text-primary-600' />:
               <span className='text-base md:text-lg'>
                 <strong className='capitalize font-normal'>
                   {getCategoryName(category)}
@@ -99,15 +98,14 @@ export default async function Page({
             </li>
 
             <li className='flex gap-2 items-center'>
-              {/* <MapPinIcon className="size-3.5 sm:size-4 md:size-5  text-primary-600" /> */}
-              <LuMapPin className='size-3.5 sm:size-4 md:size-5  text-primary-600' />
-              :<span className=''>El Marg</span>
+              {/* <MapPinIcon className="size-4 md:size-5  text-primary-600" /> */}
+              <LuMapPin className='size-5  text-primary-600' />:
+              <span className=''>El Marg</span>
               <span className='text-base md:text-lg'>(cairo)</span>
             </li>
 
             <li className='flex gap-2 items-center'>
-              <MdOutlinePhoneInTalk className='size-3.5 sm:size-4 md:size-5  text-primary-600' />
-              :
+              <MdOutlinePhoneInTalk className='size-5  text-primary-600' />:
               <a
                 href='https://wa.me/201014851383'
                 target='_blank'
