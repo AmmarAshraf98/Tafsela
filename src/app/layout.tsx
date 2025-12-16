@@ -9,9 +9,10 @@ import { Roboto } from "next/font/google";
 // google font
 const robot = Roboto({
   display: "swap",
-  // subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  subsets: ["latin"],
+  weight: ["400", "500"],
   variable: "--roboto",
+  preload: true,
 });
 
 // meta data
