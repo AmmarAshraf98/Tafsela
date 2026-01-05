@@ -13,7 +13,7 @@ function CheckBoxCom({ defaultValue }: { defaultValue?: boolean }) {
         htmlFor='sale'
         className='w-full p-2.5 ms-2 text-sm font-medium text-primary-600 dark:text-primary-300'
       >
-        get discount
+        on_sale
       </label>
     </div>
   );

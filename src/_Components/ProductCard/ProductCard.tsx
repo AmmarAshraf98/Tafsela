@@ -13,14 +13,13 @@ function ProductCard({
 }) {
   const { id, name, description, price, on_sale, main_img, priceAfterSale } =
     product;
-  const res = convertDriveLink(main_img);
 
   return (
     <div className='border-primary-800 bg-primary-500 border relative text-primary-900 group'>
       {/* MAIN_Image */}
       <div className='relative aspect-[1/1] w-full overflow-hidden'>
         <Image
-          src={res}
+          src={convertDriveLink(main_img)}
           fill
           alt={`Tafsela luxury product ${name} – high-end jewelry and accessories`}
           className='object-cover object-top'
@@ -41,9 +40,7 @@ function ProductCard({
 
       {/* PRODUCT_CONTENT */}
       <div className='pt-5 pb-4 px-3 md:px-5  flex-grow '>
-        <h3 className='text-accent-500 font-semibold text-xl mb-3'>
-          Cabin {name}
-        </h3>
+        <h3 className='text-accent-500 font-semibold text-xl mb-3'>{name}</h3>
 
         {/* description */}
         <p className='text-md text-primary-900'>{maxLength(description)}</p>

@@ -1,9 +1,10 @@
 "use client";
-import React, { useState } from "react";
-import SelectComponent from "./SelectComponent";
-import CheckBoxCom from "./CheckBoxCom";
 import { addProductAction } from "@/lib/actions";
+import { useState } from "react";
 import { useFormStatus } from "react-dom";
+import CheckBoxCom from "./CheckBoxCom";
+import SelectComponent from "./SelectComponent";
+import BestCheckBox from "./BestCheckBox";
 
 function DashForm() {
   const [imgInput, setImgInput] = useState<number>(1);
@@ -101,6 +102,17 @@ function DashForm() {
               Category
             </label>
             <SelectComponent />
+          </div>
+
+          {/* Is beast seller */}
+          <div className='w-full'>
+            <label
+              htmlFor='on_sale'
+              className='block mb-2 text-sm font-medium text-primary-600 dark:text-primary-300'
+            >
+              Best Seller
+            </label>
+            <BestCheckBox />
           </div>
 
           {/*  Main Image*/}

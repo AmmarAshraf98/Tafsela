@@ -20,6 +20,8 @@ export async function signOutAction() {
 // -------------------------------  CRUD OPERATION FOR PRODUCTS [ DASHBOARD]  ---------------------------------
 // Action to handle adding a new product
 export async function addProductAction(formData: FormData) {
+  console.log(formData);
+
   // basic fields
   const name = formData.get("name") as string;
   const price = Number(formData.get("price"));
@@ -28,7 +30,7 @@ export async function addProductAction(formData: FormData) {
   const category = Number(formData.get("category"));
   const main_img = formData.get("main_img") as string;
   const description = formData.get("description") as string;
-
+  const best_seller = formData.get("best_seller") === "on";
   // dynamic images: img_1, img_2, img_3...
   const dynamicImages: Record<string, string> = {};
 
@@ -47,6 +49,7 @@ export async function addProductAction(formData: FormData) {
     main_img,
     ...dynamicImages,
     description,
+    best_seller,
   };
 
   const { error } = await supabase.from("items").insert(product).single();
