@@ -57,8 +57,9 @@ export async function addProductAction(formData: FormData) {
   if (error) throw new Error("Failed to add product");
   console.log("error message if can not adding product", error || error);
 
+  // refresh the allstore dashboard so newly added items appear immediately
+  revalidatePath("/dashboard/allstore");
   // display success status to the client
-  // ...
 }
 
 // action to handle delete product
