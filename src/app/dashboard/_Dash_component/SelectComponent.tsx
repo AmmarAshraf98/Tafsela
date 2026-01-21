@@ -28,19 +28,19 @@ function SelectComponent({ defaultValue }: { defaultValue?: string }) {
           value='2'
           className='data-[highlighted]:bg-primary-600 data-[state=checked]:bg-primary-600 data-[state=checked]:text-primary-200 transition-colors cursor-pointer'
         >
-          bride mirror
+          bridal touches
         </SelectItem>
         <SelectItem
           value='3'
           className='data-[highlighted]:bg-primary-600 data-[state=checked]:bg-primary-600 data-[state=checked]:text-primary-200 transition-colors cursor-pointer'
         >
-          wedding contract
+          hand embroidery
         </SelectItem>
         <SelectItem
           value='4'
           className='data-[highlighted]:bg-primary-600 data-[state=checked]:bg-primary-600 data-[state=checked]:text-primary-200 transition-colors cursor-pointer'
         >
-          ring trays
+          bride set
         </SelectItem>
         <SelectItem
           value='5'
@@ -52,7 +52,13 @@ function SelectComponent({ defaultValue }: { defaultValue?: string }) {
           value='6'
           className='data-[highlighted]:bg-primary-600 data-[state=checked]:bg-primary-600 data-[state=checked]:text-primary-200 transition-colors cursor-pointer'
         >
-          hand fan
+          bouquets
+        </SelectItem>
+        <SelectItem
+          value='7'
+          className='data-[highlighted]:bg-primary-600 data-[state=checked]:bg-primary-600 data-[state=checked]:text-primary-200 transition-colors cursor-pointer'
+        >
+          giveaways
         </SelectItem>
       </SelectContent>
     </Select>
