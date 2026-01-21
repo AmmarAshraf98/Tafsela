@@ -6,15 +6,15 @@ export const getCategoryName = (id: number) => {
       break;
 
     case 2:
-      name = "bride mirror";
+      name = "bridal touches";
       break;
 
     case 3:
-      name = "wedding contract";
+      name = "Hand embroidery";
       break;
 
     case 4:
-      name = "ring trays";
+      name = "bride set";
       break;
 
     case 5:
@@ -22,7 +22,11 @@ export const getCategoryName = (id: number) => {
       break;
 
     case 6:
-      name = "hand fan";
+      name = "bouquets";
+      break;
+
+    case 7:
+      name = "giveaways";
       break;
   }
 

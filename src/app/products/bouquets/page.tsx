@@ -6,7 +6,7 @@ import ItemsList from "../_Components/ItemsList";
 import SectionHeader from "../_Components/SectionHeader";
 
 export const metadata: Metadata = {
-  title: "Hand Fan",
+  title: "Bouquets",
 };
 
 async function page({
@@ -20,7 +20,7 @@ async function page({
   return (
     <section>
       <SectionHeader
-        title='Our Special Hand Fan'
+        title='Our Special Bouquets'
         description='Timeless elegance, perfectly reflected. Bespoke Bride Mirrors crafted
                 to embody your beauty and style.'
       />

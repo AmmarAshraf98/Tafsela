@@ -5,6 +5,7 @@ import { ImMagicWand } from "react-icons/im";
 import { MdStorefront } from "react-icons/md";
 import styles from "./category.module.css";
 import CategoryItem from "./CategoryItem";
+import { IoGiftSharp } from "react-icons/io5";
 
 const links: SideNavigationLinks[] = [
   {
@@ -15,8 +16,8 @@ const links: SideNavigationLinks[] = [
   },
   {
     id: 2,
-    name: "Wedding Contract",
-    href: "/products/wedding-contract",
+    name: "Hand Embroidery",
+    href: "/products/hand-embroidery",
     icon: <FaHandHoldingHeart />,
   },
   {
@@ -27,8 +28,8 @@ const links: SideNavigationLinks[] = [
   },
   {
     id: 4,
-    name: "Ring Trays",
-    href: "/products/trays",
+    name: "Bride Set",
+    href: "/products/bride-set",
     icon: <GiDiamondRing />,
   },
   {
@@ -39,15 +40,21 @@ const links: SideNavigationLinks[] = [
   },
   {
     id: 6,
-    name: " Bride Mirror",
-    href: "/products/mirror",
+    name: "Bridal Touches",
+    href: "/products/bridal-touches",
     icon: <FaHandHoldingHeart />,
   },
   {
     id: 7,
-    name: "Hand Fan",
-    href: "/products/fan",
+    name: "Bouquets",
+    href: "/products/bouquets",
     icon: <GiHandheldFan />,
+  },
+  {
+    id: 8,
+    name: "giveaways",
+    href: "/products/giveaways",
+    icon: <IoGiftSharp />,
   },
 ];
 

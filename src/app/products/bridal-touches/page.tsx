@@ -5,8 +5,10 @@ import { Suspense } from "react";
 import ItemsList from "../_Components/ItemsList";
 import SectionHeader from "../_Components/SectionHeader";
 
+export const revalidate = 3600;
+
 export const metadata: Metadata = {
-  title: " Rings trays",
+  title: "bridal-touches",
 };
 
 async function page({
@@ -15,19 +17,20 @@ async function page({
   searchParams: Promise<{ price: string }>;
 }) {
   const filter = (await searchParams).price;
+  console.log(filter);
 
   const filtration = handleFilter(filter);
 
   return (
     <section>
       <SectionHeader
-        title='Our Lovely Rings Trays'
+        title='Our Luxury Bride Mirror'
         description='Timeless elegance, perfectly reflected. Bespoke Bride Mirrors crafted
-                to embody your beauty and style.'
+          to embody your beauty and style.'
       />
 
       <Suspense fallback={<Spinner />} key={filter}>
-        <ItemsList categoryID='4' filter={filtration} />
+        <ItemsList categoryID='2' filter={filtration} />
       </Suspense>
     </section>
   );
