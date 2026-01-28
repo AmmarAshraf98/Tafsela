@@ -20,8 +20,6 @@ export async function signOutAction() {
 // -------------------------------  CRUD OPERATION FOR PRODUCTS [ DASHBOARD]  ---------------------------------
 // Action to handle adding a new product
 export async function addProductAction(formData: FormData) {
-  console.log(formData);
-
   // basic fields
   const name = formData.get("name") as string;
   const price = Number(formData.get("price"));
@@ -59,6 +57,8 @@ export async function addProductAction(formData: FormData) {
 
   // refresh the allstore dashboard so newly added items appear immediately
   revalidatePath("/dashboard/allstore");
+  revalidatePath("/products");
+  revalidatePath("/dashboard/add");
   // display success status to the client
 }
 
@@ -88,8 +88,6 @@ export async function deleteProductAction(productId: number) {
   revalidatePath("/dashboard/allstore");
 
   // display success status to the client
-  // ...
-  // return { ok: true };
 }
 
 // Action to handle updating a prodcut by Id
@@ -121,6 +119,7 @@ export async function updateProductAction(formData: FormData) {
   // dynamic images: img_1, img_2, img_3...
   const dynamicImages: Record<string, string> = {};
 
+  // collect dynamic images from formData into dynamicImages object
   formData.forEach((value, key) => {
     if (key.startsWith("img_")) {
       dynamicImages[key] = value as string;
@@ -138,7 +137,7 @@ export async function updateProductAction(formData: FormData) {
     description,
   };
 
-  const { data, error } = await supabase
+  const { error } = await supabase
     .from("items")
     .update(updatedProduct)
     .eq("id", id)
@@ -149,11 +148,12 @@ export async function updateProductAction(formData: FormData) {
     console.log("error", error);
   }
 
-  // get the fresh data after updating
+  // Revalidate all affected pages after updating
   revalidatePath("/dashboard/allstore");
+  revalidatePath("/products");
+  revalidatePath("/products/[productId]");
 
   // navigate to allstore or display success status to the client
-  // ....
 }
 
 // ----------------------------------- END OF CRUD OPERATION FOR PRODUCTS ------------------------------------
