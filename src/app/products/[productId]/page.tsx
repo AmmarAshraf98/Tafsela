@@ -1,5 +1,5 @@
 import { getCategoryName } from "@/lib/helper/getCategoryName";
-import { getAllItems, getSpecificProduct } from "@/services/dataServece";
+import { getSpecificProduct } from "@/services/dataServece";
 import { LuMapPin } from "react-icons/lu";
 import { MdOutlinePhoneInTalk } from "react-icons/md";
 import { TbCategory } from "react-icons/tb";
@@ -19,16 +19,6 @@ export async function generateMetadata({
   return { title: `product ${productId}` };
 }
 
-// generate static params to convert this page from dynamic to static (SSG)
-export async function generateStaticParams() {
-  const products = await getAllItems();
-
-  const ids = products?.map((product) => ({ productId: String(product.id) }));
-
-  return ids;
-}
-
-// when page is dynamic | has generate static params no need to use await with the params
 export default async function Page({
   params,
 }: {

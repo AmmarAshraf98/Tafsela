@@ -4,6 +4,8 @@ import { getOffersProducts } from "@/services/dataServece";
 import { Suspense } from "react";
 import SectionHeader from "../products/_Components/SectionHeader";
 
+export const dynamic = "force-dynamic";
+
 function page() {
   return (
     <section>

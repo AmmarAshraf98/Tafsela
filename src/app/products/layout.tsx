@@ -1,6 +1,8 @@
 import React from "react";
 import CategorySlider from "./_Components/CategorySlider/CategorySlider";
 
+export const dynamic = "force-dynamic";
+
 function layout({ children }: { children: Readonly<React.ReactNode> }) {
   return (
     <section className=''>

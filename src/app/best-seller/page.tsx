@@ -2,6 +2,8 @@ import ProductCard from "@/_Components/ProductCard/ProductCard";
 import Spinner from "@/_Components/Spinner";
 import { getBestSellerProducts } from "@/services/dataServece";
 import { Suspense } from "react";
+
+export const dynamic = "force-dynamic";
 import SectionHeader from "../products/_Components/SectionHeader";
 
 function page() {
