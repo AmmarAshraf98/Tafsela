@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 function Profile({
   src,
   alt,
@@ -9,11 +11,14 @@ function Profile({
 }) {
   return (
     <div className='relative group'>
-      <img
+      <Image
         src={src}
         alt={alt}
+        width={28}
+        height={28}
         className={`size-7 rounded-full ${className}`}
         referrerPolicy='no-referrer'
+        unoptimized
       />
     </div>
   );

@@ -1,6 +1,5 @@
 "use client";
 import MiniSpiner from "@/_Components/MiniSpiner";
-import Spinner from "@/_Components/Spinner";
 import { deleteProductAction } from "@/lib/actions";
 import { useTransition } from "react";
 import { RiDeleteBin6Line } from "react-icons/ri";

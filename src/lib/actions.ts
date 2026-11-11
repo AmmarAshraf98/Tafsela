@@ -20,6 +20,16 @@ export async function signOutAction() {
 // -------------------------------  CRUD OPERATION FOR PRODUCTS [ DASHBOARD]  ---------------------------------
 // Action to handle adding a new product
 export async function addProductAction(formData: FormData) {
+  const session = await auth();
+
+  if (!session) {
+    throw new Error("You must be signed in to add a product");
+  }
+
+  if (!session.user?.email || !checkAdmin(session.user.email)) {
+    throw new Error("You are not authorized to add a product");
+  }
+
   // basic fields
   const name = formData.get("name") as string;
   const price = Number(formData.get("price"));
@@ -53,7 +63,6 @@ export async function addProductAction(formData: FormData) {
   const { error } = await supabase.from("items").insert(product).single();
 
   if (error) throw new Error("Failed to add product");
-  console.log("error message if can not adding product", error || error);
 
   // refresh the allstore dashboard so newly added items appear immediately
   revalidatePath("/dashboard/allstore");
@@ -145,7 +154,6 @@ export async function updateProductAction(formData: FormData) {
 
   if (error) {
     throw new Error("Failed To update product :(");
-    console.log("error", error);
   }
 
   // Revalidate all affected pages after updating
